@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hostel_world;
+CREATE DATABASE IF NOT EXISTS hostile_world;
 
-USE hostel_world;
+USE hostile_world;
 
 DROP TABLE IF EXISTS hostels;
 CREATE TABLE hostels (
@@ -17,6 +17,7 @@ CREATE TABLE images (
   url VARCHAR(255),
   description VARCHAR(255),
   hostel_id INT,
+  PRIMARY KEY(id),
   FOREIGN KEY(hostel_id)
     REFERENCES hostels(id)
     ON DELETE CASCADE
