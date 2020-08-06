@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# AWS key
+server/database/awsS3.js

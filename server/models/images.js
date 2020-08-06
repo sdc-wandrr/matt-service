@@ -11,6 +11,7 @@ class Image {
         callback(error, null);
         return;
       }
+
       callback(null, results);
     })
   }
