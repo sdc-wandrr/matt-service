@@ -1,27 +1,15 @@
-let db = require('../database/index.js');
+const db = require('../database/index.js');
 
-class Image {
+module.exports.fetchAllByHostelId = (id, callback) => {
+  const queryStr = 'SELECT * FROM `images` WHERE hostel_id = ?';
+  const queryArgs = [id];
 
-  fetchAllByHostelId (id, callback) {
-    let queryStr = 'SELECT * FROM `images` WHERE hostel_id = ?';
-    let queryArgs = [id];
+  db.query(queryStr, queryArgs, (error, results) => {
+    if (error) {
+      callback(error, null);
+      return;
+    }
 
-    db.query(queryStr, queryArgs, (error, results, fields) => {
-      if (error) {
-        callback(error, null);
-        return;
-      }
-
-      callback(null, results);
-    })
-  }
-}
-
-
-
-
-
-
-
-
-module.exports = new Image();
+    callback(null, results);
+  });
+};
