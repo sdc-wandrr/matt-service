@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import $ from 'jquery';
 import HeaderImage from './HeaderImage.jsx';
 import ImageGrid from './ImageGrid.jsx';
+
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 444px 700px 108px;
+  grid-template-rows: 444px 200px 108px;
   width: 100%;
   height: 100%;
 `;
@@ -25,12 +27,38 @@ class App extends React.Component {
     this.state = {
       images: [],
     };
+    this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
+  }
+
+  componentDidMount() {
+    // THIS IS HARDCODED CURRENTLY
+    // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
+    // FROM URL
+    this.fetchImagesByHostelId(Math.floor(Math.random() * (50 - 1) + 1));
+  }
+
+  fetchImagesByHostelId(id) {
+    $.ajax({
+      url: `/api/hostels/${id}/images`,
+      type: 'GET',
+      dataType: 'json',
+      success: (results) => {
+        console.log(results);
+        this.setState({
+          images: [...results],
+        });
+        console.log(this.state.images);
+      },
+      error: () => console.log('An error occurred fetching images'),
+    });
   }
 
   render() {
     return (
       <Container>
-        <HeaderImage />
+        {this.state.images.length > 0 &&
+          <HeaderImage images={[...this.state.images]} />
+        }
         <Filler />
         <ImageGrid />
       </Container>

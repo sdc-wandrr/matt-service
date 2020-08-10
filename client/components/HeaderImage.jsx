@@ -1,12 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import ImageCounter from './ImageCounter.jsx';
+import Logo from './Logo.jsx';
+import SettingsBar from './SettingsBar.jsx';
 
-const HeaderImage = styled.div`
+const HeaderImage = (props) => (
+  <StyledHeaderImage imagePath={props.images[0].url || ''}>
+    <Logo />
+    <SettingsBar />
+    <ImageCounter />
+  </StyledHeaderImage>
+);
+
+const StyledHeaderImage = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 100%;
   height: 100%;
-  background-color: aqua;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 25px;
+  background-image: url(${props => props.imagePath});
+  background-size: auto;
+  background-position: center;
 `;
 
 export default HeaderImage;
