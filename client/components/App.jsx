@@ -1,13 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import HeaderImage from './HeaderImage.jsx';
+import ImageGrid from './ImageGrid.jsx';
 
-const Button = styled.button`
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 444px 700px 108px;
+  width: 100%;
+  height: 100%;
+`;
+
+const Filler = styled.div`
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: #31363f;
+  width: 100%;
+  height: 100%;
 `;
 
 class App extends React.Component {
@@ -20,10 +29,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello from the Image Carousel</h1>
-        <Button>Hello</Button>
-      </div>
+      <Container>
+        <HeaderImage />
+        <Filler />
+        <ImageGrid />
+      </Container>
     );
   }
 }
