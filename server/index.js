@@ -8,7 +8,7 @@ const port = 3000;
 const models = require('./models/index.js');
 
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api/:hostel_id/images', (req, res) => {
   // invoke images model method "fetchAllByHostel"
