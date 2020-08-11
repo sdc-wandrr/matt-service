@@ -4,7 +4,6 @@ import $ from 'jquery';
 import HeaderImage from './HeaderImage.jsx';
 import ImageGrid from './ImageGrid.jsx';
 
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -60,7 +59,7 @@ class App extends React.Component {
           <HeaderImage images={[...this.state.images]} />
         }
         <Filler />
-        <ImageGrid />
+        <ImageGrid images={[...this.state.images]} />
       </Container>
     );
   }
