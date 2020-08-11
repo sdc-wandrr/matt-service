@@ -6,7 +6,7 @@ const StyledImageGrid = styled.div`
   grid-column: 1 / 2;
   grid-row: 3 / 4;
   width: 1088px;
-  height: 108px;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -17,7 +17,7 @@ const StyledImageGrid = styled.div`
 
 const ImageGrid = (props) => (
   <StyledImageGrid>
-    {props.images.map((image) => <ImageGridItem image={image} />)}
+    {props.images.map((image) => <ImageGridItem image={image} onModal={props.onModal} />)}
   </StyledImageGrid>
 );
 

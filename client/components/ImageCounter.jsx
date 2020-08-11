@@ -25,7 +25,7 @@ const StyledImageCounter = styled.button`
 `;
 
 const ImageCounter = (props) => (
-  <StyledImageCounter>
+  <StyledImageCounter onClick={() => props.onModal()}>
     <ImageIcon fill="white" />
     <p>1/{props.images.length}</p>
   </StyledImageCounter>

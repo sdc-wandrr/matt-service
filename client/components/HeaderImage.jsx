@@ -8,7 +8,7 @@ const HeaderImage = (props) => (
   <StyledHeaderImage imagePath={props.images[0].url}>
     <Logo />
     <SettingsBar />
-    <ImageCounter images={props.images} />
+    <ImageCounter images={props.images} onModal={props.onModal} />
   </StyledHeaderImage>
 );
 
@@ -23,6 +23,8 @@ const StyledHeaderImage = styled.div`
   background-image: url(${props => props.imagePath});
   background-size: cover;
   background-position: center;
+  margin: 0;
+  padding: 0;
 `;
 
 export default HeaderImage;

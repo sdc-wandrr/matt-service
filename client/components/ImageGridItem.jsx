@@ -15,7 +15,7 @@ const StyledImage = styled.img`
 `;
 
 const ImageGridItem = (props) => (
-  <StyledImageGridItem>
+  <StyledImageGridItem onClick={() => props.onModal()} >
     <StyledImage src={props.image.url} />
   </StyledImageGridItem>
 )

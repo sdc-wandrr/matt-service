@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import $ from 'jquery';
 import HeaderImage from './HeaderImage.jsx';
 import ImageGrid from './ImageGrid.jsx';
+import ImageCarousel from './ImageCarousel.jsx';
 
 const Container = styled.div`
   display: grid;
@@ -10,6 +11,8 @@ const Container = styled.div`
   grid-template-rows: 444px 200px 108px;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 `;
 
 const Filler = styled.div`
@@ -25,8 +28,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       images: [],
+      showModal: false,
     };
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
+    this.showImageCarousel = this.showImageCarousel.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +39,10 @@ class App extends React.Component {
     // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
     // FROM URL
     this.fetchImagesByHostelId(Math.floor(Math.random() * (50 - 1) + 1));
+  }
+
+  showImageCarousel() {
+    this.setState({ showModal: true });
   }
 
   fetchImagesByHostelId(id) {
@@ -54,13 +63,22 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container>
-        {this.state.images.length > 0 &&
-          <HeaderImage images={[...this.state.images]} />
+      <div>
+        {!this.state.showModal &&
+          (
+          <Container>
+            {this.state.images.length > 0 &&
+              <HeaderImage images={this.state.images} onModal={this.showImageCarousel} />
+            }
+            <Filler />
+            <ImageGrid images={this.state.images} onModal={this.showImageCarousel} />
+          </Container>
+          )
         }
-        <Filler />
-        <ImageGrid images={[...this.state.images]} />
-      </Container>
+        { this.state.showModal &&
+              <ImageCarousel images={this.state.images} />
+            }
+      </div>
     );
   }
 }
