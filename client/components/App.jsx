@@ -1,9 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import $ from 'jquery';
 import HeaderImage from './HeaderImage.jsx';
 import ImageGrid from './ImageGrid.jsx';
 import ImageCarousel from './ImageCarousel.jsx';
+
+const GlobalStyle = createGlobalStyle`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+  }
+`;
 
 const Container = styled.div`
   display: grid;
@@ -69,6 +79,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <GlobalStyle />
         {!this.state.showModal &&
           (
           <Container>
@@ -81,8 +92,8 @@ class App extends React.Component {
           )
         }
         { this.state.showModal &&
-              <ImageCarousel images={this.state.images} onExit={this.handleExitClick} />
-            }
+          <ImageCarousel images={this.state.images} onExit={this.handleExitClick} />
+        }
       </div>
     );
   }

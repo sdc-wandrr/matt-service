@@ -34,7 +34,7 @@ const StyledImage = styled.img`
   flex-direction: row;
   justify-self: center;
   align-items: center;
-  filter: brightness(${(props) => props.index === 0 ? 1 : .2});
+  filter: brightness(${(props) => props.index === 0 ? 1 : .3});
   @media (max-width: 1200px) {
     grid-column: ${(props) => props.index + 4} / ${(props) => props.index + 5};
   }

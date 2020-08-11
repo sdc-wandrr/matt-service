@@ -12,7 +12,6 @@ const StyledImageCarousel = styled.div`
   grid-template-columns: 50px 1fr 1fr 50px;
   grid-template-rows: 50px 1fr 50px 200px 75px;
   background-color: #31363f;
-  border: solid 1px white;
   z-index: 10;
 `;
 
@@ -20,7 +19,6 @@ const StyledLeftSidebar = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 3;
   display: flex;
-  border: solid white 1px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -33,13 +31,11 @@ const StyledCornerGrid = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid white 1px;
 `;
 
 const StyledCurrentImage = styled.img`
   grid-column: 2 / 4;
   grid-row: 1 / 3;
-  border: solid white 1px;
   width: auto;
   height: auto;
   max-width: 1186px;
@@ -47,6 +43,7 @@ const StyledCurrentImage = styled.img`
   display: flex;
   flex-direction: row;
   justify-self: center;
+  border-radius: 2px;
 `;
 
 const StyledRightSidebar = styled.div`
@@ -56,14 +53,12 @@ const StyledRightSidebar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid white 1px;
 `;
 
 const StyledImageCount = styled.div`
   grid-column: 1 / 5;
   grid-row: 3 / 4;
   display: flex;
-  border: solid white 1px;
   font-size: 16px;
   font-weight: 700;
   color: #fff;

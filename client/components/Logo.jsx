@@ -22,8 +22,8 @@ const StyledLogoDiv = styled.div`
 `;
 
 const Backsplash = styled.div`
-  width: 90%;
-  height: 90%;
+  width: 87%;
+  height: 87%;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   background-color: #fff;
@@ -35,6 +35,9 @@ const Backsplash = styled.div`
 const StyledTitle = styled.h1`
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  font-weight: 900;
+  font-style: "normal";
+  text-shadow: 2px 2px 2px #31363f;
 `;
 
 const Logo = (props) => (
