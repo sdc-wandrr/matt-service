@@ -39,8 +39,8 @@ const StyledCurrentImage = styled.img`
   grid-column: 2 / 4;
   grid-row: 1 / 3;
   border: solid white 1px;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   max-width: 1186px;
   max-height: 560px;
   display: flex;
