@@ -1,13 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import $ from 'jquery';
+import HeaderImage from './HeaderImage.jsx';
+import ImageGrid from './ImageGrid.jsx';
 
-const Button = styled.button`
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 444px 200px 108px;
+  width: 100%;
+  height: 100%;
+`;
+
+const Filler = styled.div`
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: #31363f;
+  width: 100%;
+  height: 100%;
 `;
 
 class App extends React.Component {
@@ -16,14 +27,41 @@ class App extends React.Component {
     this.state = {
       images: [],
     };
+    this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
+  }
+
+  componentDidMount() {
+    // THIS IS HARDCODED CURRENTLY
+    // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
+    // FROM URL
+    this.fetchImagesByHostelId(Math.floor(Math.random() * (50 - 1) + 1));
+  }
+
+  fetchImagesByHostelId(id) {
+    $.ajax({
+      url: `/api/hostels/${id}/images`,
+      type: 'GET',
+      dataType: 'json',
+      success: (results) => {
+        console.log(results);
+        this.setState({
+          images: [...results],
+        });
+        console.log(this.state.images);
+      },
+      error: () => console.log('An error occurred fetching images'),
+    });
   }
 
   render() {
     return (
-      <div>
-        <h1>Hello from the Image Carousel</h1>
-        <Button>Hello</Button>
-      </div>
+      <Container>
+        {this.state.images.length > 0 &&
+          <HeaderImage images={[...this.state.images]} />
+        }
+        <Filler />
+        <ImageGrid />
+      </Container>
     );
   }
 }

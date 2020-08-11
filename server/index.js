@@ -10,11 +10,11 @@ const models = require('./models/index.js');
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/api/:hostel_id/images', (req, res) => {
+app.get('/api/hostels/:hostel_id/images', (req, res) => {
   // invoke images model method "fetchAllByHostel"
-  const params = url.parse(req.url, true).query;
-
-  models.image.fetchAllByHostelId(params.hostel_id, (error, images) => {
+  // const params = url.parse(req.url, true).query;
+  // console.log(req.params.hostel_id);
+  models.image.fetchAllByHostelId(req.params.hostel_id, (error, images) => {
     if (error) {
       res.status(502).send();
       return;
