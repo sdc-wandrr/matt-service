@@ -5,10 +5,10 @@ import Logo from './Logo.jsx';
 import SettingsBar from './SettingsBar.jsx';
 
 const HeaderImage = (props) => (
-  <StyledHeaderImage imagePath={props.images[0].url || ''}>
+  <StyledHeaderImage imagePath={props.images[0].url}>
     <Logo />
     <SettingsBar />
-    <ImageCounter />
+    <ImageCounter images={props.images} />
   </StyledHeaderImage>
 );
 
