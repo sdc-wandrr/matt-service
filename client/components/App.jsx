@@ -32,6 +32,7 @@ class App extends React.Component {
     };
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
     this.showImageCarousel = this.showImageCarousel.bind(this);
+    this.handleExitClick = this.handleExitClick.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,10 @@ class App extends React.Component {
     // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
     // FROM URL
     this.fetchImagesByHostelId(Math.floor(Math.random() * (50 - 1) + 1));
+  }
+
+  handleExitClick() {
+    this.setState({showModal: false});
   }
 
   showImageCarousel() {
@@ -76,7 +81,7 @@ class App extends React.Component {
           )
         }
         { this.state.showModal &&
-              <ImageCarousel images={this.state.images} />
+              <ImageCarousel images={this.state.images} onExit={this.handleExitClick} />
             }
       </div>
     );
