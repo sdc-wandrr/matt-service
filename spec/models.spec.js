@@ -1,8 +1,5 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-const axios = require('axios');
-const server = require('../server/index.js');
-const db = require('../server/database/index.js');
 const images = require('../server/models/images.js');
 
 describe('Querying the database', () => {

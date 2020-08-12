@@ -15,7 +15,6 @@ test('Does not GET the endpoint for images of a nonexistant hostel', async (done
   const hostelId = 500;
   const res = await request.get(`/api/hostels/${hostelId}/images`);
 
-  console.log(res);
   expect(res.statusCode).toBe(502);
   expect(Object.keys(res.body).length).toBe(0);
   done();
