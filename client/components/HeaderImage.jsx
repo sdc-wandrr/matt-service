@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImageCounter from './ImageCounter.jsx';
-import Logo from './Logo.jsx';
-import SettingsBar from './SettingsBar.jsx';
+import { ImageCounter } from './ImageCounter';
+import Logo from './Logo';
+import SettingsBar from './SettingsBar';
 
 const HeaderImage = (props) => (
   <StyledHeaderImage imagePath={props.images[0].url}>

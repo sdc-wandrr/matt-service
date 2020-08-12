@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImageGridItem from './ImageGridItem.jsx';
+import { ImageGridItem } from './ImageGridItem';
 
 const StyledImageGrid = styled.div`
   grid-column: 1 / 2;
@@ -21,4 +21,7 @@ const ImageGrid = (props) => (
   </StyledImageGrid>
 );
 
-export default ImageGrid;
+export {
+  ImageGrid,
+  StyledImageGrid,
+};

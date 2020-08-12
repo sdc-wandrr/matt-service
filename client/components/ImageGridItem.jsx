@@ -18,6 +18,10 @@ const ImageGridItem = (props) => (
   <StyledImageGridItem onClick={() => props.onModal()} >
     <StyledImage src={props.image.url} />
   </StyledImageGridItem>
-)
+);
 
-export default ImageGridItem;
+export {
+  ImageGridItem,
+  StyledImageGridItem,
+  StyledImage,
+};

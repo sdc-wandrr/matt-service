@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import images from './mockData.jsx';
+import images from './mockData';
 
-import { HeaderImage, StyledHeaderImage } from '../client/components/HeaderImage.jsx';
-import Logo from '../client/components/Logo.jsx';
-import SettingsBar from '../client/components/SettingsBar.jsx';
-import ImageCounter from '../client/components/ImageCounter.jsx';
+import { HeaderImage, StyledHeaderImage } from '../client/components/HeaderImage';
+import Logo from '../client/components/Logo';
+import SettingsBar from '../client/components/SettingsBar';
+import { ImageCounter } from '../client/components/ImageCounter';
 
 
 describe('<HeaderImage />', () => {

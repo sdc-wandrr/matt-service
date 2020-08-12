@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import $ from 'jquery';
-import HeaderImage from './HeaderImage.jsx';
-import ImageGrid from './ImageGrid.jsx';
-import ImageCarousel from './ImageCarousel.jsx';
+import HeaderImage from './HeaderImage';
+import { ImageGrid } from './ImageGrid';
+import ImageCarousel from './ImageCarousel';
 
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
