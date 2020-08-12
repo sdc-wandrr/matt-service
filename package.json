@@ -14,6 +14,16 @@
     "test": "node_modules/.bin/jest spec --notify --coverage",
     "react-dev": "webpack -d --watch"
   },
+  "jest": {
+    "setupFilesAfterEnv": ["<rootDir>client/setupTests.js"],
+    "moduleFileExtensions": ["js", "jsx"],
+    "modulePaths": [
+      "<rootDir>/client/components"
+  ],
+  "moduleDirectories": [
+      "client/components"
+  ]
+  },
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
     "axios": "^0.19.2",
