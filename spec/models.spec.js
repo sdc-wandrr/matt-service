@@ -12,9 +12,10 @@ describe('Querying the database', () => {
     });
   });
 
-  test('fetchAllByHostelId returns an empty list for ids greater than 100', () => {
+  test('fetchAllByHostelId returns an error for ids greater than 100', () => {
     images.fetchAllByHostelId(103, (error, fetchedImages) => {
-      expect(fetchedImages.length).toBe(0);
+      expect(error).toBeDefined();
+      expect(fetchedImages).toBe(null);
     });
   });
 });
