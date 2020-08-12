@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ImageGridItem } from './ImageGridItem';
+import { ImageGridItem } from './ImageGridItem.jsx';
 
 const StyledImageGrid = styled.div`
   grid-column: 1 / 2;

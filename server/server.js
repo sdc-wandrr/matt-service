@@ -5,7 +5,7 @@ const models = require('./models/index.js');
 const app = express();
 
 app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
 app.get('/api/hostels/:hostel_id/images', (req, res) => {
   // invoke images model method "fetchAllByHostel"

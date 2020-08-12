@@ -30,7 +30,8 @@
     "transform": {
       "^.+\\.(js||jsx)$": "babel-jest",
       "^.+\\.svg$": "jest-svg-transformer"
-    }
+    },
+    "testURL": "http://localhost:3000/hostels/100"
   },
   "dependencies": {
     "@babel/preset-react": "^7.10.4",

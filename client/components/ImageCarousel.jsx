@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LeftArrowIcon from '../assets/left_arrow.svg';
 import RightArrowIcon from '../assets/right_arrow.svg';
 import ClearIcon from '../assets/clear.svg';
-import { ThumbnailCarousel } from './ThumbnailCarousel';
+import { ThumbnailCarousel } from './ThumbnailCarousel.jsx';
 
 const StyledImageCarousel = styled.div`
   display: grid;
