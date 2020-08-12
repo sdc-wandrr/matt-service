@@ -14,12 +14,18 @@ const StyledImageCounter = styled.button`
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 80px;
-  justify-self: center;
+  width: 75px;
+  height: 35px;
+  padding: 10px;
+  justify-self: end;
+  align-self: center;
+  margin: 0 35px 5px 0;
+  border-radius: 5px;
+  border: none;
 `;
 
 const ImageCounter = (props) => (
-  <StyledImageCounter>
+  <StyledImageCounter onClick={() => props.onModal()}>
     <ImageIcon fill="white" />
     <p>1/{props.images.length}</p>
   </StyledImageCounter>

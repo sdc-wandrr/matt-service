@@ -5,11 +5,10 @@ module.exports.fetchAllByHostelId = (id, callback) => {
   const queryArgs = [id];
 
   db.query(queryStr, queryArgs, (error, results) => {
-    if (error) {
-      callback(error, null);
+    if (error || results.length === 0) {
+      callback('error', null);
       return;
     }
-
     callback(null, results);
   });
 };

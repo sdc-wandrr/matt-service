@@ -1,27 +1,6 @@
-const express = require('express');
-const url = require('url');
-const path = require('path');
-
-const app = express();
+const app = require('./server.js');
 
 const port = 3000;
-const models = require('./models/index.js');
-
-app.use(express.urlencoded());
-app.use(express.static(path.join(__dirname, '../public')));
-
-app.get('/api/hostels/:hostel_id/images', (req, res) => {
-  // invoke images model method "fetchAllByHostel"
-  // const params = url.parse(req.url, true).query;
-  // console.log(req.params.hostel_id);
-  models.image.fetchAllByHostelId(req.params.hostel_id, (error, images) => {
-    if (error) {
-      res.status(502).send();
-      return;
-    }
-    res.send(images);
-  });
-});
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

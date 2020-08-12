@@ -8,7 +8,7 @@ const HeaderImage = (props) => (
   <StyledHeaderImage imagePath={props.images[0].url}>
     <Logo />
     <SettingsBar />
-    <ImageCounter images={props.images} />
+    <ImageCounter images={props.images} onModal={props.onModal} />
   </StyledHeaderImage>
 );
 
@@ -19,10 +19,12 @@ const StyledHeaderImage = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 50px 1fr 25px;
+  grid-template-rows: 50px 1fr 75px;
   background-image: url(${props => props.imagePath});
-  background-size: auto;
+  background-size: cover;
   background-position: center;
+  margin: 0;
+  padding: 0;
 `;
 
 export default HeaderImage;
