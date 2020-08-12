@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import $ from 'jquery';
+import axios from 'axios';
 import { HeaderImage } from './HeaderImage.jsx';
 import { ImageGrid } from './ImageGrid.jsx';
 import { ImageCarousel } from './ImageCarousel.jsx';
@@ -71,19 +71,13 @@ class App extends React.Component {
   }
 
   fetchImagesByHostelId(id) {
-    $.ajax({
-      url: `/api/hostels/${id}/images`,
-      type: 'GET',
-      dataType: 'json',
-      success: (results) => {
-        console.log(results);
+    axios.get(`/api/hostels/${id}/images`)
+      .then((results) => {
         this.setState({
-          images: [...results],
+          images: [...results.data],
         });
-        console.log(this.state.images);
-      },
-      error: () => console.log('An error occurred fetching images'),
-    });
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
