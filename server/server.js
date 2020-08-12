@@ -12,7 +12,7 @@ app.get('/api/hostels/:hostel_id/images', (req, res) => {
   // const params = url.parse(req.url, true).query;
   // console.log(req.params.hostel_id);
   models.image.fetchAllByHostelId(req.params.hostel_id, (error, images) => {
-    console.log('error: ', error, 'images', images);
+    // console.log('error: ', error, 'images', images);
 
     if (error) {
       res.status(502).send();

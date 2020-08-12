@@ -27,4 +27,7 @@ const StyledHeaderImage = styled.div`
   padding: 0;
 `;
 
-export default HeaderImage;
+export {
+  HeaderImage,
+  StyledHeaderImage,
+};

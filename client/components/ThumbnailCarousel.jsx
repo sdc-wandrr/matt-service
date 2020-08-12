@@ -56,4 +56,8 @@ class ThumbnailCarousel extends React.Component {
   }
 }
 
-export default ThumbnailCarousel;
+export {
+  ThumbnailCarousel,
+  StyledThumbnailCarousel,
+  StyledImage,
+};
