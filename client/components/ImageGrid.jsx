@@ -17,7 +17,7 @@ const StyledImageGrid = styled.div`
 
 const ImageGrid = (props) => (
   <StyledImageGrid>
-    {props.images.map((image) => <ImageGridItem image={image} onModal={props.onModal} />)}
+    {props.images.map((image, index) => <ImageGridItem image={image} onModal={props.onModal} index={index} onSelectImage={props.onSelectImage} />)}
   </StyledImageGrid>
 );
 

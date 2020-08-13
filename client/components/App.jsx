@@ -39,11 +39,13 @@ class App extends React.Component {
     this.state = {
       images: [],
       showModal: false,
-      hostelId: 1
+      hostelId: 1,
+      currentImageIndex: 0
     };
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
     this.showImageCarousel = this.showImageCarousel.bind(this);
     this.handleExitClick = this.handleExitClick.bind(this);
+    this.handleGridItemSelect = this.handleGridItemSelect.bind(this);
   }
 
   componentDidMount() {
@@ -63,11 +65,19 @@ class App extends React.Component {
   }
 
   handleExitClick() {
-    this.setState({showModal: false});
+    this.setState({
+      showModal: false,
+      currentImageIndex: 0,
+    });
   }
 
   showImageCarousel() {
     this.setState({ showModal: true });
+  }
+
+  handleGridItemSelect(index) {
+    this.setState({ currentImageIndex: index });
+    this.showImageCarousel();
   }
 
   fetchImagesByHostelId(id) {
@@ -91,12 +101,12 @@ class App extends React.Component {
               <HeaderImage images={this.state.images} onModal={this.showImageCarousel} />
             }
             <Filler />
-            <ImageGrid images={this.state.images} onModal={this.showImageCarousel} />
+            <ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />
           </Container>
           )
         }
         { this.state.showModal &&
-          <ImageCarousel images={this.state.images} onExit={this.handleExitClick} />
+          <ImageCarousel images={this.state.images} onExit={this.handleExitClick} index={this.state.currentImageIndex} />
         }
       </div>
     );

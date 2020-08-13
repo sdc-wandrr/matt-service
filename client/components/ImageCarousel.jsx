@@ -101,7 +101,7 @@ class ImageCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentIndex: 0,
+      currentIndex: this.props.index
     };
 
     this.handleLeftClick = this.handleLeftClick.bind(this);
@@ -132,7 +132,7 @@ class ImageCarousel extends React.Component {
           <LeftArrowIcon fill="#fff" width="55px" height="55px" />
         </StyledLeftSidebar>
         <StyledCurrentImage src={this.props.images[this.state.currentIndex].url} alt="" />
-        <StyledCornerGrid onClick={() => this.props.onExit()} >
+        <StyledCornerGrid onClick={() => this.props.onExit()}>
           <ClearIcon fill="#fff" width="35px" height="35px" />
         </StyledCornerGrid>
         <StyledRightSidebar onClick={() => this.handleRightClick()}>
@@ -140,7 +140,7 @@ class ImageCarousel extends React.Component {
         </StyledRightSidebar>
         <StyledImageCount>{this.state.currentIndex + 1}/{this.props.images.length}</StyledImageCount>
         <ThumbnailCarousel images={this.props.images} scalar={this.state.currentIndex} onThumbnail={this.handleThumbnailClick} />
-        <StyledBackButton>Back to HOSTEL</StyledBackButton>
+        <StyledBackButton onClick={() => this.props.onExit()}>Back to HOSTEL</StyledBackButton>
         <StyledPricesButton>Check Prices</StyledPricesButton>
       </StyledImageCarousel>
     );

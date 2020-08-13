@@ -9,7 +9,7 @@ const StyledSettingsBar = styled.div`
   width: 250px;
   display: flex;
   flex-direction: row;
-  flew-wrap: nowrap;
+  flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
   margin: 50px 0 0 0;
