@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    docker:
+    machine:
       - image: 'circleci/node:latest'
       - image: 'circleci/mysql:5.7.31'
         environment:
@@ -30,5 +30,4 @@ jobs:
             mysql -h 127.0.0.1 -u root hostile_world < server/schema.sql
             mysql -h 127.0.0.1 -u root hostile_world < server/database/dummyData.sql
       - run: sleep 3
-      - run: npm start
       - run: npm run test --bail --ci
