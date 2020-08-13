@@ -6,11 +6,13 @@ const StyledLogo = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   color: #fff;
+  width: max-content;
+  height: max-content;
   display: grid;
   grid-template-columns: 75px 1fr;
   grid-template-rows: 1fr;
   gap: 5px;
-  margin: 10px;
+  margin: 15px 0 0 25px;
 `;
 
 const StyledLogoDiv = styled.div`

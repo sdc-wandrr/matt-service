@@ -141,7 +141,7 @@ class ImageCarousel extends React.Component {
         <StyledImageCount>{this.state.currentIndex + 1}/{this.props.images.length}</StyledImageCount>
         <ThumbnailCarousel images={this.props.images} scalar={this.state.currentIndex} onThumbnail={this.handleThumbnailClick} />
         <StyledBackButton onClick={() => this.props.onExit()}>Back to HOSTEL</StyledBackButton>
-        <StyledPricesButton>Check Prices</StyledPricesButton>
+        <StyledPricesButton onClick={() => this.props.onRedirect()}>Check Prices</StyledPricesButton>
       </StyledImageCarousel>
     );
   }

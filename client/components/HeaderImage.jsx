@@ -18,7 +18,7 @@ const StyledHeaderImage = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 40vw 30vw 30vw;
   grid-template-rows: 50px 1fr 75px;
   background-image: url(${props => props.imagePath});
   background-size: cover;
