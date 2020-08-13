@@ -24,6 +24,9 @@ const StyledImageCounter = styled.button`
   right: 18px;
   border-radius: 5px;
   border: none;
+  &:hover {
+    filter: brightness(.7);
+  }
 `;
 
 const ImageCounter = (props) => (

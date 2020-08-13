@@ -9,7 +9,7 @@ const StyledSettingsBar = styled.div`
   width: 220px;
   height: max-content;
   position: relative;
-  top: 39px;
+  top: 38px;
   right: 35px;
   display: flex;
   flex-direction: row;
@@ -30,6 +30,10 @@ const StyledUser = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledLanguage = styled.h3`
@@ -44,6 +48,10 @@ const StyledLanguage = styled.h3`
   width: max-content;
   padding: 5px 8px;
   margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledCurrency = styled.h3`
@@ -57,6 +65,10 @@ const StyledCurrency = styled.h3`
   width: max-content;
   padding: 5px 8px;
   margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledMenu = styled.div`
@@ -71,6 +83,10 @@ const StyledMenu = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const SettingsBar = (props) => (
