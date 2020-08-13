@@ -1,9 +1,10 @@
 version: 2.1
 jobs:
   build:
-    machine:
+    docker:
       - image: 'circleci/node:latest'
       - image: 'circleci/mysql:5.7.31'
+        command: mysqld
         environment:
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_DATABASE: 'hostile_world'
@@ -12,7 +13,6 @@ jobs:
     working_directory: ~/feature
     steps:
       - checkout
-      - run: npm install
       - run:
           name: Waiting for MySQL to be ready
           command: |
@@ -29,5 +29,11 @@ jobs:
             sudo apt-get install default-mysql-client
             mysql -h 127.0.0.1 -u root hostile_world < server/schema.sql
             mysql -h 127.0.0.1 -u root hostile_world < server/database/dummyData.sql
+      - run: npm install
       - run: sleep 3
       - run: npm run test --bail --ci
+workflows:
+  version: 2.1
+  build-deploy:
+    jobs:
+      - build
