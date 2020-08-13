@@ -15,14 +15,14 @@ jobs:
       - run: npm install
       - run:
           name: Waiting for MySQL to be ready
-            command: |
-              for i in `seq 1 10`;
-              do
-                nc -z 127.0.0.1 3306 && echo Success && exit 0
-                echo -n .
-                sleep 1
-              done
-              echo Failed waiting for MySQL && exit 1
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
       - run:
           name: Install MySQL CLI; Create schema;
           command: |
@@ -32,4 +32,4 @@ jobs:
       - run: sleep 3
       - run: npm start
       - run: sleep 3
-      - run: npm test
+      - run: npm run test --bail --ci
