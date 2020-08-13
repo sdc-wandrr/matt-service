@@ -24,13 +24,12 @@ jobs:
             done
             echo Failed waiting for MySQL && exit 1
       - run:
-          name: Install MySQL CLI; Create schema;
+          name: Install MySQL CLI;
           command: |
             sudo apt-get install default-mysql-client
-            mysql -h 127.0.0.1 -u root hostile_world < server/schema.sql
-            mysql -h 127.0.0.1 -u root hostile_world < server/database/dummyData.sql
       - run: npm install
       - run: sleep 3
+      - run: npm run seed
       - run: npm run test --bail --ci
 workflows:
   version: 2.1
