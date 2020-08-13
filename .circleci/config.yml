@@ -34,8 +34,9 @@ jobs:
             sudo apt-get install default-mysql-client
       - run: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run: mysql -h 127.0.0.1 -u root < server/schema.sql
-      - run: mysql -h 127.0.0.1 -u root hostile_world < server/database/dummyData.sql
       - run: npm install
+      - run: sleep 3
+      - run: npm run seed
       - run: sleep 3
       - run: npm run test --bail --ci
 workflows:
