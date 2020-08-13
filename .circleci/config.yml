@@ -32,4 +32,4 @@ jobs:
       - run: sleep 5
       - run: npm start
       - run: sleep 3
-      - run: npm test
+      - run: npm run test --bail --ci
