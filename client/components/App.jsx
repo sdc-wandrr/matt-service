@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import $ from 'jquery';
-import HeaderImage from './HeaderImage.jsx';
-import ImageGrid from './ImageGrid.jsx';
-import ImageCarousel from './ImageCarousel.jsx';
+import axios from 'axios';
+import { HeaderImage } from './HeaderImage.jsx';
+import { ImageGrid } from './ImageGrid.jsx';
+import { ImageCarousel } from './ImageCarousel.jsx';
 
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
@@ -39,6 +39,7 @@ class App extends React.Component {
     this.state = {
       images: [],
       showModal: false,
+      hostelId: 1
     };
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
     this.showImageCarousel = this.showImageCarousel.bind(this);
@@ -49,7 +50,16 @@ class App extends React.Component {
     // THIS IS HARDCODED CURRENTLY
     // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
     // FROM URL
-    this.fetchImagesByHostelId(Math.floor(Math.random() * (50 - 1) + 1));
+    this.setCurrentHostelId();
+  }
+
+  setCurrentHostelId() {
+    const pathToId = window.location.pathname;
+    const reg = /[0-9]+/g;
+    const id = pathToId.match(reg);
+    const strippedId = id[0];
+    this.setState({hostelId: strippedId});
+    this.fetchImagesByHostelId(id);
   }
 
   handleExitClick() {
@@ -61,19 +71,13 @@ class App extends React.Component {
   }
 
   fetchImagesByHostelId(id) {
-    $.ajax({
-      url: `/api/hostels/${id}/images`,
-      type: 'GET',
-      dataType: 'json',
-      success: (results) => {
-        console.log(results);
+    axios.get(`/api/hostels/${id}/images`)
+      .then((results) => {
         this.setState({
-          images: [...results],
+          images: results.data,
         });
-        console.log(this.state.images);
-      },
-      error: () => console.log('An error occurred fetching images'),
-    });
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {

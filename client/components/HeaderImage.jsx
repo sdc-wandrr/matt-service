@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImageCounter from './ImageCounter.jsx';
+import { ImageCounter } from './ImageCounter.jsx';
 import Logo from './Logo.jsx';
 import SettingsBar from './SettingsBar.jsx';
 
@@ -27,4 +27,7 @@ const StyledHeaderImage = styled.div`
   padding: 0;
 `;
 
-export default HeaderImage;
+export {
+  HeaderImage,
+  StyledHeaderImage,
+};

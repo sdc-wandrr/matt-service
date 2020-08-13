@@ -14,9 +14,29 @@
     "test": "node_modules/.bin/jest spec --notify --coverage",
     "react-dev": "webpack -d --watch"
   },
+  "jest": {
+    "verbose": false,
+    "setupFilesAfterEnv": [
+      "<rootDir>spec/setupTests.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "client"
+    ],
+    "transform": {
+      "^.+\\.(js||jsx)$": "babel-jest",
+      "^.+\\.svg$": "jest-svg-transformer"
+    },
+    "testURL": "http://localhost:3000/hostels/100"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
     "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "file-loader": "^6.0.0",
@@ -35,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
@@ -45,6 +66,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.2.2",
+    "jest-svg-transformer": "^1.0.0",
     "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"

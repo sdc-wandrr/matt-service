@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import LeftArrowIcon from '../assets/left_arrow.svg';
 import RightArrowIcon from '../assets/right_arrow.svg';
 import ClearIcon from '../assets/clear.svg';
-import ThumbnailCarousel from './ThumbnailCarousel.jsx';
+import { ThumbnailCarousel } from './ThumbnailCarousel.jsx';
 
 const StyledImageCarousel = styled.div`
   display: grid;
@@ -147,4 +147,16 @@ class ImageCarousel extends React.Component {
   }
 }
 
-export default ImageCarousel;
+export {
+  ImageCarousel,
+  StyledImageCarousel,
+  StyledLeftSidebar,
+  LeftArrowIcon,
+  StyledCurrentImage,
+  StyledCornerGrid,
+  StyledRightSidebar,
+  StyledImageCount,
+  ThumbnailCarousel,
+  StyledBackButton,
+  StyledPricesButton,
+};

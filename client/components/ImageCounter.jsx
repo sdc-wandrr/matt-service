@@ -31,4 +31,8 @@ const ImageCounter = (props) => (
   </StyledImageCounter>
 );
 
-export default ImageCounter;
+export {
+  ImageCounter,
+  StyledImageCounter,
+  ImageIcon,
+};
