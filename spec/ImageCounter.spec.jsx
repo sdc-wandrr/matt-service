@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import images from './mockData';
 
-import {ImageCounter, StyledImageCounter, ImageIcon } from '../client/components/ImageCounter';
+import { ImageCounter, StyledImageCounter, ImageIcon } from '../client/components/ImageCounter';
 
 describe('<ImageCounter />', () => {
   test('Renders all subcomponents', () => {

@@ -73,8 +73,9 @@ class App extends React.Component {
   fetchImagesByHostelId(id) {
     axios.get(`/api/hostels/${id}/images`)
       .then((results) => {
+        console.log(results.data);
         this.setState({
-          images: [...results.data],
+          images: results.data,
         });
       })
       .catch((error) => console.log(error));

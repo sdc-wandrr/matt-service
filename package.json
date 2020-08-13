@@ -15,7 +15,7 @@
     "react-dev": "webpack -d --watch"
   },
   "jest": {
-    "verbose": true,
+    "verbose": false,
     "setupFilesAfterEnv": [
       "<rootDir>spec/setupTests.js"
     ],
