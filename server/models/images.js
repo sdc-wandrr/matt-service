@@ -8,6 +8,7 @@ module.exports.fetchAllByHostelId = (id, callback) => {
     if (error || results.length === 0) {
       callback('error', null);
       return;
+    }
     callback(null, results);
   });
 };

@@ -30,4 +30,5 @@ jobs:
             mysql -h 127.0.0.1 -u root hostile_world < server/schema.sql
             mysql -h 127.0.0.1 -u root hostile_world < server/database/dummyData.sql
       - run: sleep 3
+      - run: npm start
       - run: npm run test --bail --ci
