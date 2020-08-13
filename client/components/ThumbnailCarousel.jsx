@@ -13,16 +13,6 @@ const StyledThumbnailCarousel = styled.div`
 
 `;
 
-// const StyledImageContainer = styled.div`
-//   width: 128px;
-//   height: 100px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 2px;
-// `;
-
 const StyledImage = styled.img`
   width: 124px;
   height: 88px;
@@ -35,6 +25,9 @@ const StyledImage = styled.img`
   justify-self: center;
   align-items: center;
   filter: brightness(${(props) => props.index === 0 ? 1 : .3});
+  &:hover {
+    filter: brightness(1);
+  }
   @media (max-width: 1200px) {
     grid-column: ${(props) => props.index + 4} / ${(props) => props.index + 5};
   }

@@ -10,9 +10,12 @@ const StyledImageCarousel = styled.div`
   width: 100vw;
   height: 100vh;
   grid-template-columns: 50px 1fr 1fr 50px;
-  grid-template-rows: 50px 1fr 50px 200px 75px;
+  grid-template-rows: 50px 1fr 75px 90px 75px;
   background-color: #31363f;
   z-index: 10;
+  @media (max-width: 1200px) {
+    grid-template-rows: 50px 1fr 50px 150px 125px;
+  }
 `;
 
 const StyledLeftSidebar = styled.div`
@@ -38,12 +41,14 @@ const StyledCurrentImage = styled.img`
   grid-row: 1 / 3;
   width: auto;
   height: auto;
-  max-width: 1186px;
-  max-height: 560px;
+  max-height: 750px;
   display: flex;
   flex-direction: row;
   justify-self: center;
   border-radius: 2px;
+  @media (max-width: 1200px) {
+    max-height: 560px;
+  }
 `;
 
 const StyledRightSidebar = styled.div`
@@ -78,9 +83,13 @@ const StyledBackButton = styled.button`
   background-color: #fff;
   color: #31363f;
   border: none;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 3px;
-  padding: 6px 10px;
+  padding: 8px 15px;
+  &:hover {
+    color: #f25621;
+    border: solid .5px #f25621;
+  }
 `;
 
 const StyledPricesButton = styled.button`
@@ -92,9 +101,12 @@ const StyledPricesButton = styled.button`
   background-color: #f25621;
   color: #fff;
   border: none;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 3px;
-  padding: 6px 10px;
+  padding: 9px 17px;
+  &:hover {
+    filter: brightness(.7);
+  }
 `;
 
 class ImageCarousel extends React.Component {

@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 444px 900px 108px 900px;
+  grid-template-rows: 444px 300px 145px 400px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -126,7 +126,7 @@ class App extends React.Component {
             }
             <Filler />
             <ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />
-            <AvailabilityFiller>Availability</AvailabilityFiller>
+            <AvailabilityFiller></AvailabilityFiller>
           </Container>
           )
         }
