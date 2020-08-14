@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 
 const StyledSearchBar = styled.div`
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
   display: grid;
   grid-template-columns: 30vw 17.5vw 17.5vw 17.5vw 17.5vw;
   grid-template-rows: 1fr 2fr;
   background-color: #31363f;
   width: 100%;
+  height: 100px;
 `;
 
 const StyledLocationDiv = styled.div`

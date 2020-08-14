@@ -12,12 +12,13 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+
     padding: 0;
     margin: 0;
     font-family: Roboto, sans-serif;
@@ -33,21 +34,21 @@ const Container = styled.div`
   margin: 0;
   padding: 0;
 `;
-const Filler = styled.div`
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  background-color: light-gray;
-  width: 100%;
-  height: 100%;
-`;
+// const Filler = styled.div`
+//   grid-column: 1 / 2;
+//   grid-row: 3 / 4;
+//   background-color: light-gray;
+//   width: 100%;
+//   height: 100%;
+// `;
 
-const AvailabilityFiller = styled.div`
-  grid-column: 1 / 2;
-  grid-row: 5 / 6;
-  background-color: #31363f;
-  width: 100%;
-  height: 100%;
-`;
+// const AvailabilityFiller = styled.div`
+//   grid-column: 1 / 2;
+//   grid-row: 5 / 6;
+//   background-color: #31363f;
+//   width: 100%;
+//   height: 100%;
+// `;
 
 class App extends React.Component {
   constructor(props) {
@@ -58,6 +59,8 @@ class App extends React.Component {
       hostelId: 1,
       currentImageIndex: 0,
     };
+
+    this.imageCarouselRef = React.createRef(null)
 
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
     this.showImageCarousel = this.showImageCarousel.bind(this);
@@ -79,20 +82,38 @@ class App extends React.Component {
     this.fetchImagesByHostelId(id);
   }
 
-  handleExitClick() {
+  handleExitClick(cb = () => {}) {
     this.setState({
       showModal: false,
       currentImageIndex: 0,
-    });
+    },
+    () => {
+     const coords = cb();
+     if (coords) {
+      window.scrollTo(coords.x, coords.y);
+     }
+    }
+    );
   }
 
   handleAvailabilityRedirect() {
-    this.handleExitClick();
+    const scrollToAvail = () => {
+      const availElem = window.document.getElementById('availability');
+      const coordinates = availElem.getBoundingClientRect();
+      return coordinates;
+    }
+
+    this.handleExitClick((scrollToAvail));
     // this.setState({shouldScroll: true});
   }
 
   showImageCarousel() {
-    this.setState({ showModal: true });
+    this.setState(
+      { showModal: true },
+      () => {
+        window.scrollTo(0, this.imageCarouselRef.current.offsetTop);
+      }
+    );
   }
 
   handleGridItemSelect(index) {
@@ -101,7 +122,7 @@ class App extends React.Component {
   }
 
   fetchImagesByHostelId(id) {
-    axios.get(`/api/hostels/${id}/images`)
+    axios.get(`http://localhost:3007/api/hostels/${id}/images`)
       .then((results) => {
         this.setState({
           images: results.data,
@@ -111,28 +132,35 @@ class App extends React.Component {
   }
 
   render() {
+    const imageGridDiv = document.getElementById('image_grid');
+    ReactDOM.createPortal((<ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />), imageGridDiv || document.body)
     return (
       <div>
         <GlobalStyle />
         {!this.state.showModal &&
           (
-          <Container>
+          // <Container>
+            <>
             {this.state.images.length > 0 &&
+              (
               <HeaderImage images={this.state.images} onModal={this.showImageCarousel} />
+              )
             }
+
+
             <SearchBar />
-            <Filler />
-            <ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />
-            <AvailabilityFiller></AvailabilityFiller>
-          </Container>
+
+            </>
+            // </Container>
           )
         }
         { this.state.showModal &&
-          <ImageCarousel images={this.state.images} onExit={this.handleExitClick} index={this.state.currentImageIndex} onRedirect={this.handleAvailabilityRedirect} />
+          <ImageCarousel images={this.state.images} onExit={this.handleExitClick} index={this.state.currentImageIndex} onRedirect={this.handleAvailabilityRedirect} ref={this.imageCarouselRef} />
         }
       </div>
     );
   }
 }
+
 
 export default App;

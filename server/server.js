@@ -1,9 +1,10 @@
 const express = require('express');
 const path = require('path');
 const models = require('./models/index.js');
-
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 app.use(express.urlencoded());
 app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 

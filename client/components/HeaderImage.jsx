@@ -16,7 +16,7 @@ const StyledHeaderImage = styled.div`
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 100%;
-  height: 100%;
+  height: 444px;
   display: grid;
   grid-template-columns: 40vw 30vw 30vw;
   grid-template-rows: 50px 1fr 75px;
