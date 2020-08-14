@@ -4,7 +4,7 @@ import { ImageGridItem } from './ImageGridItem.jsx';
 
 const StyledImageGrid = styled.div`
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
   width: 1088px;
   height: auto;
   display: flex;

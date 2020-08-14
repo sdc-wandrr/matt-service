@@ -5,6 +5,7 @@ import axios from 'axios';
 import { HeaderImage } from './HeaderImage.jsx';
 import { ImageGrid } from './ImageGrid.jsx';
 import { ImageCarousel } from './ImageCarousel.jsx';
+import SearchBar from './SearchBar.jsx';
 
 const GlobalStyle = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
@@ -26,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 444px 300px 145px 400px;
+  grid-template-rows: 444px 100px 300px 145px 400px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -34,15 +35,15 @@ const Container = styled.div`
 `;
 const Filler = styled.div`
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  background-color: #31363f;
+  grid-row: 3 / 4;
+  background-color: light-gray;
   width: 100%;
   height: 100%;
 `;
 
 const AvailabilityFiller = styled.div`
   grid-column: 1 / 2;
-  grid-row: 4 / 5;
+  grid-row: 5 / 6;
   background-color: #31363f;
   width: 100%;
   height: 100%;
@@ -119,6 +120,7 @@ class App extends React.Component {
             {this.state.images.length > 0 &&
               <HeaderImage images={this.state.images} onModal={this.showImageCarousel} />
             }
+            <SearchBar />
             <Filler />
             <ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />
             <AvailabilityFiller></AvailabilityFiller>
