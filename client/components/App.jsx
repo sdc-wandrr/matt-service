@@ -32,7 +32,6 @@ const Container = styled.div`
   margin: 0;
   padding: 0;
 `;
-
 const Filler = styled.div`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -58,7 +57,6 @@ class App extends React.Component {
       hostelId: 1,
       currentImageIndex: 0,
     };
-    this.availabilityRef = React.createRef();
 
     this.fetchImagesByHostelId = this.fetchImagesByHostelId.bind(this);
     this.showImageCarousel = this.showImageCarousel.bind(this);
@@ -68,9 +66,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // THIS IS HARDCODED CURRENTLY
-    // MUST FIND WAY TO ACCESS CURRENT HOSTEL ID
-    // FROM URL
     this.setCurrentHostelId();
   }
 
