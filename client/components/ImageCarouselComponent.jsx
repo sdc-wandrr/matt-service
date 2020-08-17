@@ -88,17 +88,17 @@ class ImageCarouselComponent extends React.Component {
       currentImageIndex: 0,
     },
     () => {
-     const coords = cb();
-     if (coords) {
-      window.scrollTo(coords.x, coords.y);
-     }
+      const coords = cb();
+      if (coords) {
+        window.scrollTo(coords.x, coords.y);
+      }
     }
     );
   }
 
   handleAvailabilityRedirect() {
     const scrollToAvail = () => {
-      const availElem = window.document.getElementById('availability');
+      const availElem = window.document.getElementById('Availability');
       const coordinates = availElem.getBoundingClientRect();
       return coordinates;
     }
@@ -122,7 +122,7 @@ class ImageCarouselComponent extends React.Component {
   }
 
   fetchImagesByHostelId(id) {
-    axios.get(`http://localhost:3007/api/hostels/${id}/images`)
+    axios.get(`/api/hostels/${id}/images`)
       .then((results) => {
         this.setState({
           images: results.data,
