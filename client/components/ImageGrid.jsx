@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ImageGridItem } from './ImageGridItem.jsx';
 
-
-const StyledGridContainer = styled.ul`
+const StyledGridContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,19 +11,16 @@ const StyledGridContainer = styled.ul`
 `;
 
 const StyledImageGrid = styled.div`
-  width: 100%;
+  width: 95%;
   max-width: 1088px;
-  height: 145px;
+  height: max-content;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   justify-self: center;
   margin-top: 25px;
-  @media (max-width: 1200px) {
-    height: max-content;
-  }
 
 `;
 

@@ -50,7 +50,7 @@ const Container = styled.div`
 //   height: 100%;
 // `;
 
-class App extends React.Component {
+class ImageCarouselComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -132,8 +132,7 @@ class App extends React.Component {
   }
 
   render() {
-    const imageGridDiv = document.getElementById('image_grid');
-    ReactDOM.createPortal((<ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />), imageGridDiv || document.body)
+    const imageGridDiv = window.document.getElementById('image_grid');
     return (
       <div>
         <GlobalStyle />
@@ -149,7 +148,7 @@ class App extends React.Component {
 
 
             <SearchBar />
-
+            {ReactDOM.createPortal((<ImageGrid images={this.state.images} onModal={this.showImageCarousel} onSelectImage={this.handleGridItemSelect} />), imageGridDiv || document.body)}
             </>
             // </Container>
           )
@@ -163,4 +162,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default ImageCarouselComponent;
