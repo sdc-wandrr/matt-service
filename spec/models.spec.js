@@ -4,7 +4,7 @@ const images = require('../server/models/images.js');
 
 describe('Querying the database', () => {
   test('fetchAllByHostelId returns a list of images for valid ids', () => {
-    images.fetchAllByHostelId(24, (error, fetchedImages) => {
+    images.fetchAllByHostelId(4, (error, fetchedImages) => {
       expect(fetchedImages.length).toBeGreaterThan(0);
     });
   });

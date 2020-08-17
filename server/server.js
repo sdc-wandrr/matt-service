@@ -1,11 +1,17 @@
 const express = require('express');
 const path = require('path');
 const models = require('./models/index.js');
-
+const cors = require('cors');
 const app = express();
 
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(express.urlencoded());
-app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
+// app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
 app.get('/api/hostels/:hostel_id/images', (req, res) => {
   // invoke images model method "fetchAllByHostel"

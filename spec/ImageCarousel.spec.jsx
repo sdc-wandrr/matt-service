@@ -9,14 +9,14 @@ import { ImageGridItem } from '../client/components/ImageGridItem.jsx';
 describe('<ImageCarousel />', () => {
   test('handleRightClick function', () => {
     const dummyFn = () => {};
-    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} />);
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     wrapper.find(StyledRightSidebar).simulate('click');
     expect(wrapper.state().currentIndex).toBe(1);
   });
 
   test('handleRightClick function at last image', () => {
     const dummyFn = () => {};
-    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} />);
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     wrapper.find(StyledRightSidebar).simulate('click');
     wrapper.find(StyledRightSidebar).simulate('click');
     wrapper.find(StyledRightSidebar).simulate('click');
@@ -29,7 +29,7 @@ describe('<ImageCarousel />', () => {
 
   test('handleLeftClick function', () => {
     const dummyFn = () => {};
-    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} />);
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     wrapper.find(StyledRightSidebar).simulate('click');
     expect(wrapper.state().currentIndex).toBe(1);
     wrapper.find(StyledLeftSidebar).simulate('click');
@@ -38,20 +38,21 @@ describe('<ImageCarousel />', () => {
 
   test('handleLeftClick function at first image', () => {
     const dummyFn = () => {};
-    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} />);
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     wrapper.find(StyledLeftSidebar).simulate('click');
     expect(wrapper.state().currentIndex).toBe(0);
   });
 
   test('handleThumbnailClick function', () => {
     const dummyFn = () => {};
-    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} />);
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     wrapper.find(StyledImage).at(2).simulate('click');
     expect(wrapper.state().currentIndex).toBe(2);
   });
 
   test('Mounts all subcomponents', () => {
-    const wrapper = mount(<ImageCarousel images={images} onExit={() => {}} />);
+    const dummyFn = () => {};
+    const wrapper = mount(<ImageCarousel images={images} onExit={dummyFn} onRedirect={() => {}} index={0} />);
     expect(wrapper.find(StyledImageCarousel)).toHaveLength(1);
     expect(wrapper.find(StyledLeftSidebar)).toHaveLength(1);
     expect(wrapper.find(StyledCurrentImage)).toHaveLength(1);

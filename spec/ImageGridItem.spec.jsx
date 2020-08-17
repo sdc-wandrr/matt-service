@@ -10,4 +10,6 @@ describe('<ImageGridItem />', () => {
     expect(wrapper.find(StyledImageGridItem)).toHaveLength(1);
     expect(wrapper.find(StyledImageGridItem).children().find(StyledImage)).toHaveLength(1);
   });
+
+  // TO_DO:  make a test using a wrapped function of showImageCarousel click handler. make sure it is called
 });

@@ -14,14 +14,19 @@ const StyledImageCounter = styled.button`
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 75px;
-  height: 35px;
+  width: 95px;
+  height: 38px;
   padding: 10px;
   justify-self: end;
   align-self: center;
-  margin: 0 35px 5px 0;
+  position: relative;
+  bottom: 1px;
+  right: 18px;
   border-radius: 5px;
   border: none;
+  &:hover {
+    filter: brightness(.7);
+  }
 `;
 
 const ImageCounter = (props) => (

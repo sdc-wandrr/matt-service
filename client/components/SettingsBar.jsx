@@ -6,50 +6,98 @@ import MenuIcon from '../assets/menu.svg';
 const StyledSettingsBar = styled.div`
   grid-column: 3 / 4;
   grid-row: 1 / 2;
-  width: 250px;
+  width: 220px;
+  height: max-content;
+  position: relative;
+  top: 38px;
+  right: 35px;
   display: flex;
   flex-direction: row;
-  flew-wrap: nowrap;
-  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  justify-self: flex-end;
+  justify-content: center;
   align-items: center;
-  margin: 50px 0 0 0;
 `;
 
 const StyledUser = styled.div`
   background-color: rgba(0,0,0,.3);
   border-radius: 5px;
+  height: 25px;
+  width: max-content;
   padding: 5px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledLanguage = styled.h3`
   background-color: rgba(0,0,0,.3);
   color: #fff;
+  font-size: 14px;
   border-radius: 5px;
-  padding: 5px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  height: 25px;
+  width: max-content;
+  padding: 5px 8px;
+  margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledCurrency = styled.h3`
   background-color: rgba(0,0,0,.3);
   color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
   border-radius: 5px;
-  padding: 5px;
+  height: 25px;
+  width: max-content;
+  padding: 5px 8px;
+  margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const StyledMenu = styled.div`
   background-color: rgba(0,0,0,.3);
   border-radius: 5px;
+  height: 25px;
+  width: max-content;
   padding: 5px;
+  margin: 0 0 0 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border: solid .5px rgba(0, 0, 0, .001);
+  &:hover {
+    border: solid .5px rgba(204,204,204,0.4);
+  }
 `;
 
 const SettingsBar = (props) => (
   <StyledSettingsBar>
     <StyledUser>
-      <UserIcon fill="#fff" />
+      <UserIcon fill="#fff" width="77%" height="77%" />
     </StyledUser>
     <StyledLanguage>English</StyledLanguage>
     <StyledCurrency>USD</StyledCurrency>
     <StyledMenu>
-      <MenuIcon fill="#fff" />
+      <MenuIcon fill="#fff" width="77%" height="77%" />
     </StyledMenu>
   </StyledSettingsBar>
 );

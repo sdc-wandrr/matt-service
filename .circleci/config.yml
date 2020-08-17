@@ -3,10 +3,44 @@ jobs:
   build:
     docker:
       - image: 'circleci/node:latest'
+      - image: 'circleci/mysql:5.7.31'
+        command: mysqld
+        environment:
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: 'hostile_world'
+          MYSQL_USER: 'traveler'
+          MYSQL_PASSWORD: 'travel'
     working_directory: ~/feature
     steps:
       - checkout
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+      - run:
+          name: Install MySQL CLI;
+          command: |
+            sudo apt-get install default-mysql-client
+      - run: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run: mysql -h 127.0.0.1 -u root < server/schema.sql
       - run: npm install
-      - run: npm start
       - run: sleep 3
-      - run: npm test
+      - run: npm run seed
+      - run: sleep 3
+      - run: npm run test --bail --ci
+workflows:
+  version: 2.1
+  build-deploy:
+    jobs:
+      - build

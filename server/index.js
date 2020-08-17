@@ -1,6 +1,6 @@
 const app = require('./server.js');
 
-const port = 3000;
+const port = 3007;
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
