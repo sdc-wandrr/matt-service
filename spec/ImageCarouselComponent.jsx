@@ -6,7 +6,7 @@ import 'babel-polyfill';
 
 jest.mock('axios');
 
-import App from '../client/components/App.jsx';
+import ImageCarouselComponent from '../client/components/ImageCarouselComponent.jsx';
 import { StyledCornerGrid, ImageCarousel } from '../client/components/ImageCarousel.jsx';
 import { StyledImageCounter, ImageCounter } from '../client/components/ImageCounter.jsx';
 import { StyledImageGridItem, ImageGridItem } from  '../client/components/ImageGridItem.jsx';
@@ -42,21 +42,21 @@ beforeAll(() => {
   axios.get.mockResolvedValue(resp);
 });
 
-describe('<App />', () => {
+describe('<ImageCarouselComponent />', () => {
   test('setCurrentHostelId', async () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<ImageCarouselComponent />);
     await wrapper.instance().setCurrentHostelId();
     expect(wrapper.state().hostelId).toBe('100');
   });
 
   test('fetchImagesByHostelId', async () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<ImageCarouselComponent />);
     await wrapper.instance().fetchImagesByHostelId('100');
     expect(wrapper.state().images).toHaveLength(3);
   });
 
   test('showImageCarousel via StyledImageCounter', async () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<ImageCarouselComponent />);
     await wrapper.instance().componentDidMount();
     wrapper.update();
     expect(wrapper.state().showModal).toBe(false);
@@ -78,7 +78,7 @@ describe('<App />', () => {
   // });
 
   test('handleExitClick', async () => {
-    const wrapper = mount(<App />);
+    const wrapper = mount(<ImageCarouselComponent />);
     await wrapper.instance().componentDidMount();
     wrapper.update();
     wrapper.find(StyledImageCounter).simulate('click');
