@@ -8,6 +8,7 @@ const StyledGridContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: max-content;
+  margin-bottom: 25px;
 `;
 
 const StyledImageGrid = styled.div`
