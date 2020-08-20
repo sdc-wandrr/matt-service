@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS hostile_world;
 
 USE hostile_world;
-CREATE USER 'traveler'@'%' IDENTIFIED BY PASSWORD 'travel';
+CREATE USER 'traveler'@'localhost' IDENTIFIED BY 'travel';
 GRANT ALL ON hostile_world.* to 'traveler'@'%';
 
 DROP TABLE IF EXISTS hostels;
