@@ -1,8 +1,10 @@
 CREATE DATABASE IF NOT EXISTS hostile_world;
 
 USE hostile_world;
+DROP USER 'traveler'@'localhost';
+FLUSH PRIVILEGES;
 CREATE USER 'traveler'@'localhost' IDENTIFIED BY 'travel';
-GRANT ALL ON hostile_world.* to 'traveler'@'%';
+
 
 DROP TABLE IF EXISTS hostels;
 CREATE TABLE hostels (
@@ -23,5 +25,7 @@ CREATE TABLE images (
   FOREIGN KEY(hostel_id)
     REFERENCES hostels(id)
     ON DELETE CASCADE
-)
+);
+
+GRANT ALL ON hostile_world.* to 'traveler'@'localhost';
 
