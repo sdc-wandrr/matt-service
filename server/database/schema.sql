@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS hostile_world;
+CREATE DATABASE IF NOT EXISTS image-carousel;
 
-USE hostile_world;
+USE image-carousel;
 DROP USER 'traveler'@'localhost';
 FLUSH PRIVILEGES;
 CREATE USER 'traveler'@'localhost' IDENTIFIED BY 'travel';
@@ -27,5 +27,5 @@ CREATE TABLE images (
     ON DELETE CASCADE
 );
 
-GRANT ALL ON hostile_world.* to 'traveler'@'localhost';
+GRANT ALL ON image-carousel.* to 'traveler'@'localhost';
 
