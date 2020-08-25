@@ -1,4 +1,4 @@
-# Project Name
+# Wandrr Image Carousel Service
 
 > The image carousel component for Wandrr app.
 
