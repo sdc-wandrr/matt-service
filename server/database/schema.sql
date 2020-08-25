@@ -1,8 +1,6 @@
 CREATE DATABASE IF NOT EXISTS image-carousel;
 
 USE image-carousel;
-DROP USER 'traveler'@'localhost';
-FLUSH PRIVILEGES;
 CREATE USER 'traveler'@'localhost' IDENTIFIED BY 'travel';
 
 
