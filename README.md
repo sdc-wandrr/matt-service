@@ -72,6 +72,7 @@ Please use the following routes for all requests to the server:
 ```/api/hostels/:hostel_id/images```
 
 A GET request to the above endpoint will fetch an array of objects containing images and image descriptions for the specified hostel id.
+
 ![Alt ](/screenshots/GET-request.png?raw=true "GET request sample data")
 
 
@@ -79,6 +80,7 @@ A GET request to the above endpoint will fetch an array of objects containing im
 ```/api/hostels/:hostel_id```
 
 A POST request to the above endpoint will create a new hostel listing. The following JSON format is required in the POST requests' body in order for the hostel to be successfully created:
+
 ![Alt ](/screenshots/POST-request.png?raw=true "Example JSON body for POST request")
 
 
@@ -86,6 +88,7 @@ A POST request to the above endpoint will create a new hostel listing. The follo
 ```/api/hostels/:hostel_id```
 
 A PUT request to the above endpoint will update a specific hostel's image/image description. You must include an image ID in the body of the PUT request to target a specific image record. The following JSON format is required in the PUT requests' body in order for the image and description to be successfully updated.
+
 ![Alt ](/screenshots/PUT-request.png?raw=true "Example JSON body for PUT request")
 
 
@@ -93,4 +96,5 @@ A PUT request to the above endpoint will update a specific hostel's image/image 
 ```/api/hostels/:hostel_id```
 
 A DELETE request to the above endpoint will delete all records of the hostel from the database. Please note: this removes the main hostel listing as well as all associated images and descriptions.
+
 ![Alt ](/screenshots/DELETE-request.png?raw=true "DELETE request success example")
