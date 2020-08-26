@@ -3,6 +3,43 @@ const db = require('../database/index.js');
 
 module.exports = {
 
+  // {
+  //   "name": "brand new hostel listing",
+  //   "address": "super awesome new address",
+  //   "file_name": "img_newListing.jpg",
+  //   "url": "https://hostileworldimages.s3.us-east-2.amazonaws.com/img_newListing.jpg",
+  //   "description": "I am a new listing"
+  //   }
+
+  // POST request
+  createNewHostelListing: (hostelListing, hostelImages, callback) => {
+    const hostelListingQueryStr = 'INSERT INTO hostels (name, address) VALUES (?, ?)';
+    const hostelImagesQueryStr = 'INSERT INTO images (file_name, url, description, hostel_id) \
+    VALUES (?, ?, ?, LAST_INSERT_ID())';
+
+    const hostelQuery = new Promise((resolve, reject) => {
+      db.query(hostelListingQueryStr, hostelListing, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
+    });
+
+    const imagesQuery = new Promise((resolve, reject) => {
+      db.query(hostelImagesQueryStr, hostelImages, (error, results) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(results);
+      });
+    });
+
+    Promise.all([hostelQuery, imagesQuery])
+      .then((results) => callback(null, results))
+      .catch((error) => callback(error, null));
+  },
+
   // GET request
   fetchAllByHostelId: (id, callback) => {
     const queryStr = 'SELECT * FROM `images` WHERE hostel_id = ?';
