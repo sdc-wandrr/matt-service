@@ -33,11 +33,13 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
-**important***
+**important**
+**--------------------**
 > You need to rename the file ```RENAME_ME_TO_CONFIG.js``` inside ```server/database/``` to ```config.js```
 <br />
 
 > You then need to add your personal MySQL username and password inside the file where instructed.
+**--------------------**
 
 Running webpack w/ Babel:
 
@@ -81,7 +83,7 @@ A GET request to the above endpoint will fetch an array of objects containing im
 ```/api/hostels/:hostel_id```
 
 A POST request to the above endpoint will create a new hostel listing.
-<br />The following JSON format is required in the POST requests' body in order for the hostel to be successfully created:
+<br /><br />The following JSON format is required in the POST requests' body in order for the hostel to be successfully created:
 
 ![Alt ](/screenshots/POST-request.png?raw=true "Example JSON body for POST request")
 
@@ -91,7 +93,7 @@ A POST request to the above endpoint will create a new hostel listing.
 
 A PUT request to the above endpoint will update a specific hostel's image/image description.
 <br />You must include an image ID in the body of the PUT request to target a specific image record.
-<br />The following JSON format is required in the PUT requests' body in order for the image and description to be successfully updated.
+<br /><br />The following JSON format is required in the PUT requests' body in order for the image and description to be successfully updated.
 
 ![Alt ](/screenshots/PUT-request.png?raw=true "Example JSON body for PUT request")
 
@@ -100,6 +102,6 @@ A PUT request to the above endpoint will update a specific hostel's image/image 
 ```/api/hostels/:hostel_id```
 
 A DELETE request to the above endpoint will delete all records of the hostel from the database.
-<br />Please note: this removes the main hostel listing as well as all associated images and descriptions.
+<br />**Please note: this removes the main hostel listing as well as all associated images and descriptions - use with care.**
 
 ![Alt ](/screenshots/DELETE-request.png?raw=true "DELETE request success example")
