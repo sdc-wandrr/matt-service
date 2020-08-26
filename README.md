@@ -43,7 +43,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 > You then need to add your personal MySQL username and password inside the file where instructed.
 <br />
 **--------------------**
-<br />
 
 Running webpack w/ Babel:
 
