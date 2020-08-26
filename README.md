@@ -18,9 +18,9 @@
 
 ## Usage
 
-> The image carousel component needs to mount onto two separate divs in the root html page. The first div should have the ID 'images-header' and the second div should have the ID 'image-grid'. There will be another div in-between these two to host the 'infoservice' component, but that is outside the scope of this service.
+The image carousel component needs to mount onto two separate divs in the root html page. The first div should have the ID 'images-header' and the second div should have the ID 'image-grid'. There will be another div in-between these two to host the 'infoservice' component, but that is outside the scope of this service.
 
-> The React.ref() used to scroll the page down to the availability will look for a div outside the scope of this service. Make sure to communicate with other team members to ensure that the Availability-Component is mounted to a div with the ID of 'Availability' for this feature to work.
+The React.ref() used to scroll the page down to the availability will look for a div outside the scope of this service. Make sure to communicate with other team members to ensure that the Availability-Component is mounted to a div with the ID of 'Availability' for this feature to work.
 
 ## Requirements
 
@@ -34,8 +34,9 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ## Development
 
 **important***
->You need to rename the file ```RENAME_ME_TO_CONFIG.js``` inside ```server/database/``` to ```config.js```
->You then need to add your personal MySQL username and password inside the file where instructed.
+> You need to rename the file ```RENAME_ME_TO_CONFIG.js``` inside ```server/database/``` to ```config.js```
+
+> You then need to add your personal MySQL username and password inside the file where instructed.
 
 Running webpack w/ Babel:
 
@@ -55,7 +56,7 @@ Running server in production
 npm start
 ```
 
-### Installing Dependencies
+## Installing Dependencies
 
 From within the root directory:
 
@@ -63,7 +64,7 @@ From within the root directory:
 npm install
 ```
 
-### API
+## API
 
 Please use the following routes for all requests to the server:
 
