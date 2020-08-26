@@ -68,7 +68,7 @@ npm install
 
 Please use the following routes for all requests to the server:
 
-<p align="center">=============================</p>
+<p align="left">=============================</p>
 **GET**
 ```/api/hostels/:hostel_id/images```
 
@@ -77,7 +77,7 @@ A GET request to the above endpoint will fetch an array of objects containing im
 ![Alt ](/screenshots/GET-request.png?raw=true "GET request sample data")
 
 
-<p align="center">=============================</p>
+<p align="left">=============================</p>
 **POST**
 ```/api/hostels/:hostel_id```
 
@@ -87,7 +87,7 @@ A POST request to the above endpoint will create a new hostel listing.
 ![Alt ](/screenshots/POST-request.png?raw=true "Example JSON body for POST request")
 
 
-<p align="center">=============================</p>
+<p align="left">=============================</p>
 **PUT**
 ```/api/hostels/:hostel_id```
 
@@ -98,7 +98,7 @@ A PUT request to the above endpoint will update a specific hostel's image/image 
 ![Alt ](/screenshots/PUT-request.png?raw=true "Example JSON body for PUT request")
 
 
-<p align="center">=============================</p>
+<p align="left">=============================</p>
 **DELETE**
 ```/api/hostels/:hostel_id```
 
