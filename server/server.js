@@ -29,8 +29,8 @@ app.get('/api/hostels/:hostel_id/images', (req, res) => {
 
 // update an item
 app.put('/api/hostels/:hostel_id', (req, res) => {
-  const updateInfo = [req.params.hostel_id, req.body.id, req.body.file_name,
-    req.body.url, req.body.description];
+  const updateInfo = [req.body.file_name, req.body.url,
+    req.body.description, req.params.hostel_id, req.body.id];
   models.image.updateEntryByHostelId(updateInfo, (error, response) => {
     if (error) {
       res.status(500).send('The record was not sucessfully updated. Please try again later.');
