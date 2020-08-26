@@ -71,7 +71,7 @@ Please use the following routes for all requests to the server:
 **GET**
 ```/api/hostels/:hostel_id/images```
 
-A GET request to the above endpoint will fetch an array of objects containing images and image descriptions for the specified hostel id.
+A GET request to the above endpoint will fetch an array of objects containing images/image descriptions for the specified hostel id.
 
 ![Alt ](/screenshots/GET-request.png?raw=true "GET request sample data")
 
