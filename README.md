@@ -76,6 +76,7 @@ A GET request to the above endpoint will fetch an array of objects containing im
 ![Alt ](/screenshots/GET-request.png?raw=true "GET request sample data")
 
 <br />
+
 **POST**
 ```/api/hostels/:hostel_id```
 
@@ -85,6 +86,7 @@ A POST request to the above endpoint will create a new hostel listing.
 ![Alt ](/screenshots/POST-request.png?raw=true "Example JSON body for POST request")
 
 <br />
+
 **PUT**
 ```/api/hostels/:hostel_id```
 
@@ -95,6 +97,7 @@ A PUT request to the above endpoint will update a specific hostel's image/image 
 ![Alt ](/screenshots/PUT-request.png?raw=true "Example JSON body for PUT request")
 
 <br />
+
 **DELETE**
 ```/api/hostels/:hostel_id```
 
