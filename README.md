@@ -33,13 +33,10 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
-**important**
-<br />
-**--------------------**
-<br />
 > You need to rename the file ```RENAME_ME_TO_CONFIG.js``` inside ```server/database/``` to ```config.js```
-<br />
+
 > You then need to add your personal MySQL username and password inside the file where instructed.
+
 
 Running webpack w/ Babel:
 
