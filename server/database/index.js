@@ -1,11 +1,7 @@
 const mysql = require('mysql');
+const mysqlConfig = require('./config.js');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'image_carousel',
-});
+const connection = mysql.createConnection(mysqlConfig);
 
 connection.connect();
 
