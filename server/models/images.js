@@ -3,14 +3,6 @@ const db = require('../database/index.js');
 
 module.exports = {
 
-  // {
-  //   "name": "brand new hostel listing",
-  //   "address": "super awesome new address",
-  //   "file_name": "img_newListing.jpg",
-  //   "url": "https://hostileworldimages.s3.us-east-2.amazonaws.com/img_newListing.jpg",
-  //   "description": "I am a new listing"
-  //   }
-
   // POST request
   createNewHostelListing: (hostelListing, hostelImages, callback) => {
     const hostelListingQueryStr = 'INSERT INTO hostels (name, address) VALUES (?, ?)';
@@ -25,7 +17,6 @@ module.exports = {
         return resolve(results);
       });
     });
-
     const imagesQuery = new Promise((resolve, reject) => {
       db.query(hostelImagesQueryStr, hostelImages, (error, results) => {
         if (error) {
@@ -34,7 +25,6 @@ module.exports = {
         return resolve(results);
       });
     });
-
     Promise.all([hostelQuery, imagesQuery])
       .then((results) => callback(null, results))
       .catch((error) => callback(error, null));
