@@ -14,7 +14,3 @@ INSERT INTO `images` (file_name, url, description, hostel_id) VALUES ('img_444.j
 INSERT INTO `images` (file_name, url, description, hostel_id) VALUES ('img_444.jpg', 'https://hostileworldimages.s3.us-east-2.amazonaws.com/img_14.jpg', ' desc', '3');
 INSERT INTO `images` (file_name, url, description, hostel_id) VALUES ('img_444.jpg', 'https://hostileworldimages.s3.us-east-2.amazonaws.com/img_14.jpg', ' desc', '3');
 INSERT INTO `images` (file_name, url, description, hostel_id) VALUES ('img_444.jpg', 'https://hostileworldimages.s3.us-east-2.amazonaws.com/img_14.jpg', ' desc', '3');
-
-
-
-

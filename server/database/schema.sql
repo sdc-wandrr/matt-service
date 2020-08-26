@@ -1,8 +1,6 @@
-CREATE DATABASE IF NOT EXISTS image-carousel;
+CREATE DATABASE IF NOT EXISTS image_carousel;
 
-USE image-carousel;
-CREATE USER 'traveler'@'localhost' IDENTIFIED BY 'travel';
-
+USE image_carousel;
 
 DROP TABLE IF EXISTS hostels;
 CREATE TABLE hostels (
@@ -24,6 +22,3 @@ CREATE TABLE images (
     REFERENCES hostels(id)
     ON DELETE CASCADE
 );
-
-GRANT ALL ON image-carousel.* to 'traveler'@'localhost';
-
