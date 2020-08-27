@@ -41,7 +41,7 @@ const generatePrimaryRecords = async (primaryRecordCount) => {
 const timestampDataGeneration = async (primaryRecordCount) => {
   try {
     const dataGenStartTime = new Date();
-    await generatePrimaryRecords(primaryRecordCount, 0);
+    await generatePrimaryRecords(primaryRecordCount);
     const dataGenFinishTime = new Date();
     console.log(`Total generation time: ${dataGenFinishTime - dataGenStartTime}ms`);
     console.log(`Total number of rows: ${totalCsvRowsWritten.toLocaleString()}`);
