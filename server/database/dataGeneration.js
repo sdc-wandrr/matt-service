@@ -52,4 +52,4 @@ const timestampDataGeneration = async (primaryRecordCount) => {
   }
 };
 
-timestampDataGeneration(100);
+timestampDataGeneration(10000000);
