@@ -6,18 +6,19 @@ let primaryRecordCount = 10000000;
 const csvWriter = createCsvWriter({
   path: 'imageCarousel.csv',
   header: [
-    { id: 'hostel_id', title: 'ID' },
+    { id: 'hostelID', title: 'ID' },
     { id: 'url', title: 'URL' },
   ],
 });
 
-const generateHostelIdData = (totalAmountOfImages, id) => {
-  let counter = totalAmountOfImages;
+const generateHostelImages = (totalNumberOfImages, hostelID) => {
+  let imageCounter = totalNumberOfImages;
   const imageRecords = [];
-  while (counter > 0) {
-    const imageIndex = Math.floor(Math.random() * 1001);
-    imageRecords.push({ hostel_id: id, url: `amazonbucketurl/images/${imageIndex}.jpg` });
-    counter -= 1;
+  while (imageCounter > 0) {
+    const imageFileName = Math.floor(Math.random() * 1001);
+    const url = `amazonbucketurl/images/${imageFileName}.jpg`;
+    imageRecords.push({ hostelID, url });
+    imageCounter -= 1;
   }
   return imageRecords;
 };
@@ -25,8 +26,8 @@ const generateHostelIdData = (totalAmountOfImages, id) => {
 const generatePrimaryRecords = async () => {
   if (primaryRecordCount >= 0) {
     try {
-      const totalImages = Math.floor(Math.random() * 8) + 1;
-      const hostelData = await generateHostelIdData(totalImages, primaryRecordCount);
+      const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
+      const hostelData = await generateHostelImages(numberOfImagesToAssign, primaryRecordCount);
       await csvWriter.writeRecords(hostelData);
       primaryRecordCount -= 1;
     } catch (err) {
@@ -39,10 +40,10 @@ const generatePrimaryRecords = async () => {
 
 const timestampDataGeneration = async () => {
   try {
-    const timebefore = new Date();
+    const dataGenStartTime = new Date();
     await generatePrimaryRecords();
-    const timeafter = new Date();
-    console.log(`It took ${timeafter - timebefore}ms to complete the data generation.`);
+    const dataGenFinishTime = new Date();
+    console.log(`It took ${dataGenFinishTime - dataGenStartTime}ms to complete the data generation.`);
   } catch (err) {
     console.log(err);
     process.exit();
