@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let primaryRecordCount = 10000000;
 let totalCsvRowsWritten = 0;
 
 const csvWriter = createCsvWriter({
@@ -24,33 +23,33 @@ const generateHostelImages = (totalNumberOfImages, hostelID) => {
   return imageRecords;
 };
 
-const generatePrimaryRecords = async () => {
+const generatePrimaryRecords = async (primaryRecordCount) => {
+  const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
   if (primaryRecordCount > 0) {
     try {
-      const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
       const hostelData = await generateHostelImages(numberOfImagesToAssign, primaryRecordCount);
       await csvWriter.writeRecords(hostelData);
       totalCsvRowsWritten += numberOfImagesToAssign;
-      primaryRecordCount -= 1;
     } catch (err) {
       console.log(err);
       process.exit();
     }
-    await generatePrimaryRecords();
+    await generatePrimaryRecords(primaryRecordCount - 1);
   }
 };
 
-const timestampDataGeneration = async () => {
+const timestampDataGeneration = async (primaryRecordCount) => {
   try {
     const dataGenStartTime = new Date();
-    await generatePrimaryRecords();
+    await generatePrimaryRecords(primaryRecordCount, 0);
     const dataGenFinishTime = new Date();
     console.log(`Total generation time: ${dataGenFinishTime - dataGenStartTime}ms`);
     console.log(`Total number of rows: ${totalCsvRowsWritten.toLocaleString()}`);
+    totalCsvRowsWritten = 0;
   } catch (err) {
     console.log(err);
     process.exit();
   }
 };
 
-timestampDataGeneration();
+timestampDataGeneration(100);
