@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let primaryRecordCount = 1000000;
+let primaryRecordCount = 10000000;
 
 const csvWriter = createCsvWriter({
   path: 'imageCarousel.csv',
