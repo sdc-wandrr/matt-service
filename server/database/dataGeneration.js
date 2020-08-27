@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let primaryRecordCount = 100000;
+let primaryRecordCount = 10000000;
 let totalCsvRowsWritten = 0;
 
 const csvWriter = createCsvWriter({
