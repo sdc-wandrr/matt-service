@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let primaryRecordCount = 10000000;
+let primaryRecordCount = 100000;
+let totalCsvRowsWritten = 0;
 
 const csvWriter = createCsvWriter({
   path: 'imageCarousel.csv',
@@ -29,6 +30,7 @@ const generatePrimaryRecords = async () => {
       const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
       const hostelData = await generateHostelImages(numberOfImagesToAssign, primaryRecordCount);
       await csvWriter.writeRecords(hostelData);
+      totalCsvRowsWritten += numberOfImagesToAssign;
       primaryRecordCount -= 1;
     } catch (err) {
       console.log(err);
@@ -43,7 +45,8 @@ const timestampDataGeneration = async () => {
     const dataGenStartTime = new Date();
     await generatePrimaryRecords();
     const dataGenFinishTime = new Date();
-    console.log(`It took ${dataGenFinishTime - dataGenStartTime}ms to complete the data generation.`);
+    console.log(`Total generation time: ${dataGenFinishTime - dataGenStartTime}ms`);
+    console.log(`Total number of rows: ${totalCsvRowsWritten.toLocaleString()}`);
   } catch (err) {
     console.log(err);
     process.exit();
