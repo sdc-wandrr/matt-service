@@ -15,8 +15,8 @@ const generateHostelImages = (totalNumberOfImages, hostelID) => {
   let imageCounter = totalNumberOfImages;
   const imageRecords = [];
   while (imageCounter > 0) {
-    const imageFileName = Math.floor(Math.random() * 1001);
-    const url = `amazonbucketurl/images/${imageFileName}.jpg`;
+    const imageFileName = Math.floor(Math.random() * 1000);
+    const url = `https://sdc-ic.s3-us-west-1.amazonaws.com/File+${imageFileName}.jpg`;
     imageRecords.push({ hostelID, url });
     imageCounter -= 1;
   }
