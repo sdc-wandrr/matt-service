@@ -15,7 +15,7 @@ const generateHostelIdData = (totalAmountOfImages, id) => {
   let counter = totalAmountOfImages;
   const imageRecords = [];
   while (counter > 0) {
-    const imageIndex = Math.floor(Math.random() * 1000) + 1;
+    const imageIndex = Math.floor(Math.random() * 1001);
     imageRecords.push({ hostel_id: id, url: `amazonbucketurl/images/${imageIndex}.jpg` });
     counter -= 1;
   }
