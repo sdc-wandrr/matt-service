@@ -25,7 +25,7 @@ const generateHostelImages = (totalNumberOfImages, hostelID) => {
 };
 
 const generatePrimaryRecords = async () => {
-  if (primaryRecordCount >= 0) {
+  if (primaryRecordCount > 0) {
     try {
       const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
       const hostelData = await generateHostelImages(numberOfImagesToAssign, primaryRecordCount);
