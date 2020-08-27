@@ -24,9 +24,9 @@ const generateHostelImages = (totalNumberOfImages, hostelID) => {
 };
 
 const generatePrimaryRecords = async (primaryRecordCount) => {
-  const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
   if (primaryRecordCount > 0) {
     try {
+      const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
       const hostelData = await generateHostelImages(numberOfImagesToAssign, primaryRecordCount);
       await csvWriter.writeRecords(hostelData);
       totalCsvRowsWritten += numberOfImagesToAssign;
