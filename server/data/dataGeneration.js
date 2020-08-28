@@ -22,7 +22,7 @@ const generateHostelImages = (hostelID, totalNumberOfImages) => {
   return imageRecords;
 };
 
-const generatePrimaryRecords = async (primaryRecordId, numberOfImagesToAssign) => {
+const generatePrimaryRecord = async (primaryRecordId, numberOfImagesToAssign) => {
   try {
     const hostelData = await generateHostelImages(primaryRecordId, numberOfImagesToAssign);
     await csvWriter.writeRecords(hostelData);
@@ -39,7 +39,7 @@ const timestampDataGeneration = async (primaryRecordCount = 10000000) => {
   try {
     while (primaryRecordId > 0) {
       const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
-      await generatePrimaryRecords(primaryRecordId, numberOfImagesToAssign);
+      await generatePrimaryRecord(primaryRecordId, numberOfImagesToAssign);
       primaryRecordId -= 1;
       totalWrittenCSVRows += numberOfImagesToAssign;
     }
