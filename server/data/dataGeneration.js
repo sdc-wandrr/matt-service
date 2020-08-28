@@ -24,7 +24,7 @@ const generateHostelImages = (hostelID, totalNumberOfImages) => {
 
 const generatePrimaryRecord = async (primaryRecordId, numberOfImagesToAssign) => {
   try {
-    const hostelData = await generateHostelImages(primaryRecordId, numberOfImagesToAssign);
+    const hostelData = generateHostelImages(primaryRecordId, numberOfImagesToAssign);
     await csvWriter.writeRecords(hostelData);
   } catch (error) {
     console.log(error);
