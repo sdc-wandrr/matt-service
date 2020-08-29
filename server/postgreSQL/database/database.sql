@@ -13,4 +13,5 @@ FROM '/Users/mpw/S-D-C/imageCarousel/server/data/imageCarousel.csv'
 DELIMITER ','
 CSV HEADER;
 
-CREATE INDEX hostel_id ON images (hostel_id);
+CREATE INDEX hostel_id
+ON images (hostel_id);
