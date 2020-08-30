@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
-const db = require('../models/images');
+const psql = require('./postgreSQL/models/images');
+const mongo = require('./mongoDB/models/images');
 
 const app = express();
 const PORT = 4000;
@@ -13,10 +15,10 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../../../public')));
-app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../../../public')));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
-app.get('/test/:id', db.getHostelImages);
+app.get('/api/hostels/:hostel_id/images', mongo.getHostelImages);
 
 app.listen(PORT, () => {
   console.log(`Image Carousel Service listening at ${PORT}`);
