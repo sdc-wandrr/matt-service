@@ -1,11 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
-const { MongoClient } = require('mongodb');
-
-const client = new MongoClient(
-  'mongodb://localhost:27017/imagecarousel',
-  { useUnifiedTopology: true },
-);
+const { client, Images } = require('../database/connection');
 
 const handleError = (error) => {
   console.log(error);
@@ -15,8 +10,7 @@ const handleError = (error) => {
 
 const writeToMongoDB = async (hostelRecord) => {
   try {
-    const imageCarousel = client.db('imagecarousel');
-    await imageCarousel.collection('images').insertOne(hostelRecord);
+    await Images.insertOne(hostelRecord);
   } catch (error) {
     handleError(error);
   }
@@ -49,7 +43,6 @@ const generatePrimaryRecord = async (primaryRecordId, numberOfImagesToAssign) =>
 const timestampDataGeneration = async (primaryRecordCount = 10000000) => {
   let primaryRecordId = primaryRecordCount;
   let totalWrittenCSVRows = 0;
-  client.connect();
   const dataGenStartTime = new Date();
   try {
     while (primaryRecordId > 0) {
