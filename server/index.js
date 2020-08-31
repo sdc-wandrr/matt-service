@@ -2,8 +2,8 @@
 /* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
-const psql = require('./postgreSQL/models/images');
-const mongo = require('./MongoDB/models/images');
+const psql = require('./postgreSQL/controllers/images');
+const mongo = require('./MongoDB/controllers/images');
 
 const app = express();
 const PORT = 4000;
