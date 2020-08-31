@@ -27,8 +27,11 @@ const generateHostelImages = (hostelID, totalNumberOfImages) => {
   let imageCounter = totalNumberOfImages;
   while (imageCounter > 0) {
     const imageFileName = Math.floor(Math.random() * 1000);
+    const imageObj = {};
     const url = `https://sdc-ic.s3-us-west-1.amazonaws.com/File+${imageFileName}.jpg`;
-    hostelRecord.images.push(url);
+    imageObj.id = imageCounter;
+    imageObj.url = url;
+    hostelRecord.images.push(imageObj);
     imageCounter -= 1;
   }
   return hostelRecord;

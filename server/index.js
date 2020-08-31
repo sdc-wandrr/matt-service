@@ -3,7 +3,7 @@
 const express = require('express');
 const path = require('path');
 const psql = require('./postgreSQL/models/images');
-const mongo = require('./mongoDB/models/images');
+const mongo = require('./MongoDB/models/images');
 
 const app = express();
 const PORT = 4000;
