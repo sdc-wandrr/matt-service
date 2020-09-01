@@ -29,11 +29,6 @@ const requestResults = (requestType, runtimeArray, requestTotal) => {
   console.log('========');
 };
 
-const generateDeleteId = () => {
-  const randomImageID = Math.floor(Math.random() * 100000000) + 1;
-  return { data: { id: randomImageID } };
-};
-
 const handleAxios = async (
   callback,
   requestsTotal,
@@ -49,7 +44,7 @@ const handleAxios = async (
       const startTime = new Date();
       const randomHostelID = Math.floor(Math.random() * 10000000) + 1;
       const query = requestString + randomHostelID + endString;
-      await request(query, typeof requestBody === 'function' ? requestBody() : requestBody)
+      await request(query, requestBody)
         .then(() => runtime.push(new Date() - startTime));
       counter += 1;
     }
@@ -98,7 +93,7 @@ const testPostRequest = (postRequests = 25000) => {
 
 const testDeleteRequest = (deleteRequests = 25000) => {
   const request = axios.delete;
-  const requestBody = generateDeleteId;
+  const requestBody = { data: { id: 1 } };
   const endString = '/images';
   return handleAxios(
     (results) => requestResults('DELETE', results, deleteRequests),
