@@ -36,7 +36,7 @@ const updateHostelImage = (req, res) => {
 };
 
 const deleteHostelImage = (req, res) => {
-  const queryString = `DELETE FROM images WHERE ID = ${req.body.id}`;
+  const queryString = `DELETE FROM images WHERE ID = '${req.body.id}'`;
   pool.query(queryString)
     .then(() => res.status(200).send('Image deleted successfully'))
     .catch((err) => {
