@@ -19,12 +19,6 @@ app.delete('/api/hostels/:hostel_id/images', psql.deleteHostelImage);
 const server = app.listen(PORT, () => console.log(`Image Carousel Service listening at ${PORT}`));
 // ============================================== //
 
-const handelError = (error) => {
-  console.log(error);
-  server.close();
-  process.exit();
-};
-
 const requestResults = (requestType, runtimeArray, requestTotal) => {
   const runtimeTotal = runtimeArray.reduce((a, b) => a + b);
   console.log(`======== \n${requestType} REQUESTS:`);
@@ -47,9 +41,9 @@ const handleAxios = async (
   endString = '',
   requestBody = null,
 ) => {
-  const requestString = `http://localhost:${PORT}/api/hostels/`;
-  const runtime = [];
   let counter = 0;
+  const runtime = [];
+  const requestString = `http://localhost:${PORT}/api/hostels/`;
   try {
     while (requestsTotal > counter) {
       const startTime = new Date();
@@ -61,7 +55,9 @@ const handleAxios = async (
     }
     callback(runtime);
   } catch (error) {
-    handelError(error);
+    console.log(error);
+    server.close();
+    process.exit();
   }
 };
 
