@@ -18,12 +18,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
-app.post('/api/hostels/:hostel_id/images', psql.addHostelImage);
-app.get('/api/hostels/:hostel_id', psql.getHostelImages);
-app.put('/api/hostels/:hostel_id/images', psql.updateHostelImage);
-app.delete('/api/hostels/:hostel_id/images', psql.deleteHostelImage);
-app.delete('/api/hostels/:hostel_id', psql.deleteHostel);
+app.post('/api/hostels/:hostel_id/images', mongo.addHostelImage);
+app.get('/api/hostels/:hostel_id', mongo.getHostelImages);
+app.put('/api/hostels/:hostel_id/images', mongo.updateHostelImage);
+app.delete('/api/hostels/:hostel_id/images', mongo.deleteHostelImage);
+app.delete('/api/hostels/:hostel_id', mongo.deleteHostel);
 
-app.listen(PORT, () => console.log(`Image Carousel Service listening at ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Image Carousel Service listening at ${PORT}`));
 
-module.exports = app;
+module.exports = { app, server };
