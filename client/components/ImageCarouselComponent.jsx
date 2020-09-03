@@ -124,7 +124,6 @@ class ImageCarouselComponent extends React.Component {
   fetchImagesByHostelId(id) {
     axios.get(`/api/hostels/${id}/images`)
       .then((results) => {
-        console.log(results.data.images);
         this.setState({
           images: results.data.images,
         });
