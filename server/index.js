@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
-const psql = require('./postgreSQL/controllers/images');
 const mongo = require('./MongoDB/controllers/images');
 
 const app = express();
@@ -19,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
 app.post('/api/hostels/:hostel_id/images', mongo.addHostelImage);
-app.get('/api/hostels/:hostel_id', mongo.getHostelImages);
+app.get('/api/hostels/:hostel_id/images', mongo.getHostelImages);
 app.put('/api/hostels/:hostel_id/images', mongo.updateHostelImage);
 app.delete('/api/hostels/:hostel_id/images', mongo.deleteHostelImage);
 app.delete('/api/hostels/:hostel_id', mongo.deleteHostel);

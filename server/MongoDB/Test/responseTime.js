@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable no-undef */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 const axios = require('axios');
