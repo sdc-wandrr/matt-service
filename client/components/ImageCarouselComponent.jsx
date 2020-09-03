@@ -78,7 +78,7 @@ class ImageCarouselComponent extends React.Component {
     const reg = /[0-9]+/g;
     const id = pathToId.match(reg);
     const strippedId = id[0];
-    this.setState({hostelId: strippedId});
+    this.setState({ hostelId: strippedId });
     this.fetchImagesByHostelId(id);
   }
 
@@ -124,8 +124,9 @@ class ImageCarouselComponent extends React.Component {
   fetchImagesByHostelId(id) {
     axios.get(`/api/hostels/${id}/images`)
       .then((results) => {
+        console.log(results.data.images);
         this.setState({
-          images: results.data,
+          images: results.data.images,
         });
       })
       .catch((error) => console.log(error));
