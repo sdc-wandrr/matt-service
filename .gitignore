@@ -28,5 +28,8 @@ public/bundle.js
 # MySQL config
 config.js
 
-#CSV data generation file
+# CSV data generation file
 imageCarousel.csv
+
+# New Relic Keys
+newrelic.js
