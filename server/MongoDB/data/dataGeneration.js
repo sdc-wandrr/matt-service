@@ -8,9 +8,9 @@ const handleError = (error) => {
   process.exit();
 };
 
-const writeToMongoDB = async (hostelRecord) => {
+const writeToMongoDB = async (hostelRecords) => {
   try {
-    await Images.insertOne(hostelRecord);
+    await Images.insertMany(hostelRecords);
   } catch (error) {
     handleError(error);
   }
@@ -31,23 +31,19 @@ const generateHostelImages = (hostelID, totalNumberOfImages) => {
   return hostelRecord;
 };
 
-const generatePrimaryRecord = async (primaryRecordId, numberOfImagesToAssign) => {
-  try {
-    const hostelRecord = generateHostelImages(primaryRecordId, numberOfImagesToAssign);
-    await writeToMongoDB(hostelRecord);
-  } catch (error) {
-    handleError(error);
-  }
-};
-
 const timestampDataGeneration = async (primaryRecordCount = 10000000) => {
   let primaryRecordId = primaryRecordCount;
   let totalWrittenCSVRows = 0;
+  let primaryRecords = [];
   const dataGenStartTime = new Date();
   try {
     while (primaryRecordId > 0) {
       const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
-      await generatePrimaryRecord(primaryRecordId, numberOfImagesToAssign);
+      primaryRecords.push(generateHostelImages(primaryRecordId, numberOfImagesToAssign));
+      if (primaryRecords.length === 100000) {
+        await writeToMongoDB(primaryRecords);
+        primaryRecords = [];
+      }
       primaryRecordId -= 1;
       totalWrittenCSVRows += numberOfImagesToAssign;
     }

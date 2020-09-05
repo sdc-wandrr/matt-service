@@ -1,8 +1,12 @@
 const { MongoClient } = require('mongodb');
+const { username, password, ip } = require('./config.js');
 
 const client = new MongoClient(
-  'mongodb://localhost:27017/imagecarousel',
-  { useUnifiedTopology: true },
+  `mongodb://${username}:${password}@${ip}`,
+  {
+    useUnifiedTopology: true,
+    poolSize: 10,
+  },
 );
 
 const connection = client.connect();

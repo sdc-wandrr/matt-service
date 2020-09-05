@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-const newrelic = require('newrelic');
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const mongo = require('./MongoDB/controllers/images');
 
 const app = express();
-const PORT = 4000;
+const PORT = 3007;
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
