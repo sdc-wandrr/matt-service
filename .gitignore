@@ -33,3 +33,6 @@ imageCarousel.csv
 
 # New Relic Keys
 newrelic.js
+
+# aws
+api_keys.js
