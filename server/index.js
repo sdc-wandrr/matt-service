@@ -23,6 +23,6 @@ app.put('/api/hostels/:hostel_id/images', mongo.updateHostelImage);
 app.delete('/api/hostels/:hostel_id/images', mongo.deleteHostelImage);
 app.delete('/api/hostels/:hostel_id', mongo.deleteHostel);
 
-const server = app.listen(PORT, () => console.log(`Image Carousel Service listening at ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 
 module.exports = { app, server };

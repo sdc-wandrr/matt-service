@@ -1,16 +1,18 @@
+/* eslint-disable no-console */
 const { MongoClient } = require('mongodb');
-const { username, password, ip } = require('./config.js');
+const { username, password } = require('./config.js');
+const getIPAddress = require('./get_ip');
 
-const client = new MongoClient(
-  `mongodb://${username}:${password}@${ip}`,
-  {
-    useUnifiedTopology: true,
-    poolSize: 10,
-  },
-);
+const queryDatabase = () => new Promise((resolve, reject) => {
+  getIPAddress()
+    .then((ip) => new MongoClient(`mongodb://${username}:${password}@${ip}`,
+      { useUnifiedTopology: true, poolSize: 100 }))
+    .then((client) => {
+      client.connect();
+      console.log('MongoDB connected');
+      resolve(client.db('imagecarousel').collection('images'));
+    })
+    .catch((error) => reject(error));
+});
 
-const connection = client.connect();
-
-const Images = client.db('imagecarousel').collection('images');
-
-module.exports = { connection, client, Images };
+module.exports = (queryDatabase());
