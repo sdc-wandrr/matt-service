@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
 let Images;
-// iif asigns promise resolution: client.db('databaseName').collection('collectionName')
 (async () => { Images = await require('../database/connection'); })();
 
 const errorMessage = 'An error occured while processing your request, please try again later.';
