@@ -6,7 +6,7 @@ const getIPAddress = require('./get_ip');
 const queryDatabase = () => new Promise((resolve, reject) => {
   getIPAddress()
     .then((ip) => new MongoClient(`mongodb://${username}:${password}@${ip}`,
-      { useUnifiedTopology: true, poolSize: 100 }))
+      { useUnifiedTopology: true, poolSize: 1000 }))
     .then((client) => {
       client.connect();
       console.log('MongoDB connected');
