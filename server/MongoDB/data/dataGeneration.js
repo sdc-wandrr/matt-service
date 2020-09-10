@@ -1,10 +1,17 @@
+/* eslint-disable global-require */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
-const { client, Images } = require('../database/connection');
+const { MongoClient } = require('mongodb');
+
+const client = new MongoClient('mongodb://matthew:password@172.31.20.91',
+  { useUnifiedTopology: true, poolSize: 50 });
+
+client.connect();
+
+const Images = client.db('imagecarousel').collection('images');
 
 const handleError = (error) => {
   console.log(error);
-  client.close();
   process.exit();
 };
 
@@ -30,14 +37,14 @@ const generateHostelImages = (hostelID, totalNumberOfImages) => {
   }
   return hostelRecord;
 };
-
-const timestampDataGeneration = async (primaryRecordCount = 10000000) => {
+// 921919
+const timestampDataGeneration = async (primaryRecordCount = 900000) => {
   let primaryRecordId = primaryRecordCount;
   let totalWrittenCSVRows = 0;
   let primaryRecords = [];
   const dataGenStartTime = new Date();
   try {
-    while (primaryRecordId > 0) {
+    while (primaryRecordId >= 0) {
       const numberOfImagesToAssign = Math.floor(Math.random() * 25) + 1;
       primaryRecords.push(generateHostelImages(primaryRecordId, numberOfImagesToAssign));
       if (primaryRecords.length === 100000) {
@@ -50,7 +57,6 @@ const timestampDataGeneration = async (primaryRecordCount = 10000000) => {
     const dataGenFinishTime = new Date();
     console.log(`Total generation time: ${dataGenFinishTime - dataGenStartTime}ms`);
     console.log(`Total data entries: ${totalWrittenCSVRows.toLocaleString()}`);
-    client.close();
   } catch (error) {
     handleError(error);
   }

@@ -17,6 +17,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
+app.get('/loaderio-b20c337914d12c3b5c6925b57f5a2b96/', (req, res) => {
+  res.sendFile(path.join(__dirname, './MongoDB/spec/loaderio-b20c337914d12c3b5c6925b57f5a2b96.txt'));
+});
+
 app.post('/api/hostels/:hostel_id/images', mongo.addHostelImage);
 app.get('/api/hostels/:hostel_id/images', mongo.getHostelImages);
 app.put('/api/hostels/:hostel_id/images', mongo.updateHostelImage);
