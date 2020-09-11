@@ -17,7 +17,7 @@ const addHostelImage = (req, res) => {
 
 const getHostelImages = (req, res) => {
   const find = { _id: Number(req.params.hostel_id) };
-  Images.find(find).limit(1).toArray().then((data) => res.status(200).send(data[0]))
+  Images.findOne(find).then((data) => res.status(200).send(data))
     .catch((err) => {
       console.log(err);
       res.status(500).send(errorMessage);
