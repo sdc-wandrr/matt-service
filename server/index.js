@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/hostels/:hostel_id', express.static(path.join(__dirname, '../public')));
 
+// loaderio verification
 app.get('/loaderio-b20c337914d12c3b5c6925b57f5a2b96/', (req, res) => {
   res.sendFile(path.join(__dirname, './MongoDB/spec/loaderio-b20c337914d12c3b5c6925b57f5a2b96.txt'));
 });
@@ -27,6 +28,4 @@ app.put('/api/hostels/:hostel_id/images', mongo.updateHostelImage);
 app.delete('/api/hostels/:hostel_id/images', mongo.deleteHostelImage);
 app.delete('/api/hostels/:hostel_id', mongo.deleteHostel);
 
-const server = app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
-
-module.exports = { app, server };
+app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

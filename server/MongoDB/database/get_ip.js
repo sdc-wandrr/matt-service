@@ -1,13 +1,19 @@
+// Optional script to automatically acquire public ip for aws instances.
 const AWS = require('aws-sdk');
-const credentials = require('./api_keys');
+const {
+  accessKeyId,
+  secretAccessKey,
+  instanceId,
+  region,
+} = require('./api_keys');
 
-const awsConfig = { credentials };
+const awsConfig = { accessKeyId, secretAccessKey };
 
 AWS.config = new AWS.Config(awsConfig);
-AWS.config.update({ region: 'us-west-1' });
+AWS.config.update({ region });
 
 const ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
-const params = { InstanceIds: ['i-047b6c2cdd4d0d09c'] };
+const params = { InstanceIds: [instanceId] };
 
 const getIPAddress = () => new Promise((resolve, reject) => {
   ec2.describeInstances(params, (err, data) => {

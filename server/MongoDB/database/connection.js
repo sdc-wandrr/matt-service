@@ -7,6 +7,6 @@ const client = new MongoClient(`mongodb://${username}:${password}@${ip}`,
 
 client.connect();
 
-const Images = client.db('imagecarousel').collection('images');
+const db = client.db('imagecarousel').collection('images');
 
-module.exports = Images;
+module.exports = db;

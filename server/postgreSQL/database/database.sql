@@ -9,6 +9,7 @@ CREATE TABLE images (
 );
 
 COPY images(hostel_id, url)
+/* absolute path to datagen csv file */
 FROM '/Users/mpw/S-D-C/imageCarousel/server/data/imageCarousel.csv'
 DELIMITER ','
 CSV HEADER;

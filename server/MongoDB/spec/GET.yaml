@@ -1,5 +1,5 @@
 config:
-  target: "http://3.101.113.69/api/hostels"
+  target: "http://localhost:3007/api/hostels"
   http:
     pool: 1000
   phases:

@@ -1,23 +1,16 @@
-/* eslint-disable global-require */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
-const { MongoClient } = require('mongodb');
-
-const client = new MongoClient('mongodb://matthew:password@172.31.20.91',
-  { useUnifiedTopology: true, poolSize: 50 });
-
-client.connect();
-
-const Images = client.db('imagecarousel').collection('images');
+const db = require('../database/connection');
 
 const handleError = (error) => {
   console.log(error);
+  db.close();
   process.exit();
 };
 
 const writeToMongoDB = async (hostelRecords) => {
   try {
-    await Images.insertMany(hostelRecords);
+    await db.insertMany(hostelRecords);
   } catch (error) {
     handleError(error);
   }
@@ -57,6 +50,7 @@ const timestampDataGeneration = async (primaryRecordCount = 900000) => {
     const dataGenFinishTime = new Date();
     console.log(`Total generation time: ${dataGenFinishTime - dataGenStartTime}ms`);
     console.log(`Total data entries: ${totalWrittenCSVRows.toLocaleString()}`);
+    process.exit();
   } catch (error) {
     handleError(error);
   }

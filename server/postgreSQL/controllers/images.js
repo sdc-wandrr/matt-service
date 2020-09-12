@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const pool = require('../database/connection');
 
-const errorMessage = 'An error occured while processing your request. Please try again later.';
+const errorMessage = 'An error occured while processing your request, pease try again later.';
 
 const addHostelImage = (req, res) => {
   const queryString = `INSERT INTO images(hostel_id, url)

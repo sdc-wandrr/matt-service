@@ -1,4 +1,3 @@
-// ** Important **
 // rename this file to config.js
 module.exports = {
   user: 'USERNAME_HERE',
